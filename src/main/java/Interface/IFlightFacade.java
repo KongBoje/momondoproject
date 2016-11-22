@@ -9,9 +9,9 @@ import java.util.List;
  * @author Joachim
  */
 public interface IFlightFacade {
-    Flight getFlight(int id);
+    Flight getFlight(Long id);
     Flight addFlight(Flight flight);
-    Flight deleteFlight(int id);
+    Boolean deleteFlight(Long id);
     List<Flight> getAllFlights();
     
     FlightInstance addFlightInstance(FlightInstance flightInstance);
