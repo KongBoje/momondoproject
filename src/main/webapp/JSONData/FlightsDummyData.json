@@ -12,7 +12,44 @@
             "destination": "MOW"
         },
         {
-            
+            "flightID": "4443-8765989054363",
+            "flightNumber": "KAF3466",
+            "date": "2016-12-03T16:00:00.000Z",
+            "numberOfSeats": 9,
+            "totalPrice": 239,
+            "traveltime": 120,
+            "origin": "OSL",
+            "destination": "ARN"
+        },
+        {
+            "flightID": "2323-8675048485030",
+            "flightNumber": "KAF6622",
+            "date": "2016-03-12T15:00:00.000Z",
+            "numberOfSeats": 4,
+            "totalPrice": 190,
+            "traveltime": 60,
+            "origin": "BAL",
+            "destination": "AAR"
+        },
+        {
+            "flightID": "8765-0101909245668",
+            "flightNumber": "KAF5789",
+            "date": "2017-01-05T12:00:00.000Z",
+            "numberOfSeats": 12,
+            "totalPrice": 300,
+            "traveltime": 264,
+            "origin": "BER",
+            "destination": "BGK"
+        },
+        {
+            "flightID": "6464-0192837465951",
+            "flightNumber": "KAF1113",
+            "date": "2017-02-01T12:00:00.000Z",
+            "numberOfSeats": 14,
+            "totalPrice": 200,
+            "traveltime": 210,
+            "origin": "DAS",
+            "destination": "HAM"
         }
     ]
 }
