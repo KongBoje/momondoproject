@@ -30,12 +30,10 @@ public class NotFoundExceptionMapper implements ExceptionMapper<NotFoundExceptio
 
   @Override
   public Response toResponse(NotFoundException ex) {
-    JsonObject error = new JsonObject();
     JsonObject errorDetail = new JsonObject();
     int statusCode = ex.getResponse().getStatus();
     errorDetail.addProperty("code", statusCode);
     errorDetail.addProperty("message", "The requested resource was not found on our server");
-    error.add("error", errorDetail);
-    return Response.status(statusCode).entity(gson.toJson(error)).type(MediaType.APPLICATION_JSON).build();
+    return Response.status(statusCode).entity(gson.toJson(errorDetail)).type(MediaType.APPLICATION_JSON).build();
   }
 }

@@ -30,16 +30,11 @@ public class FlightExceptionMapper implements ExceptionMapper<FlightException> {
 
     @Override
     public Response toResponse(FlightException ex) {
-        JsonObject error = new JsonObject();
         JsonObject errorDetail = new JsonObject();
-
         errorDetail.addProperty("httpError", ex.httpError);
         errorDetail.addProperty("errorCode", ex.errorCode);
         errorDetail.addProperty("message", ex.message);
         
-        error.add("error", errorDetail);
-        
-        return Response.status(ex.errorCode).entity(gson.toJson(error)).type(MediaType.APPLICATION_JSON).build();
-        
+        return Response.status(ex.httpError).entity(gson.toJson(errorDetail)).type(MediaType.APPLICATION_JSON).build();
     }
 }
