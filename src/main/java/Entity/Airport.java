@@ -12,17 +12,54 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
- * @author Michael
+ * @author Joachim
  */
 @Entity
-public class dummy implements Serializable {
+public class Airport implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    
     private Long id;
+    private String name;
+    private String country;
+    private String city;
+    
+    public Airport (String name, String country, String city) {
+        this.name = name;
+        this.country = country;
+        this.city = city;
+    }
+    
+    public Airport () {
+        
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -41,10 +78,10 @@ public class dummy implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof dummy)) {
+        if (!(object instanceof Airport)) {
             return false;
         }
-        dummy other = (dummy) object;
+        Airport other = (Airport) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -53,7 +90,7 @@ public class dummy implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.dummy[ id=" + id + " ]";
+        return "Entity.Airport[ id=" + id + " ]";
     }
     
 }
