@@ -1,0 +1,18 @@
+{
+    "airline": "Kaffemantours",
+    "flights":[
+        {
+            "flightID": "5342-5374581236347",
+            "flightNumber": "KAF6666",
+            "date": "2016-11-22T12:00:00.000Z",
+            "numberOfSeats": 6,
+            "totalPrice": 67,
+            "traveltime": 240,
+            "origin": "CPH",
+            "destination": "MOW"
+        },
+        {
+            
+        }
+    ]
+}

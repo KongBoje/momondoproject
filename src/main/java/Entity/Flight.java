@@ -30,8 +30,8 @@ public class Flight implements Serializable {
     private int flightNumber;
     private int seats;
     private int flightTime;
-    @OneToMany(cascade = (CascadeType.PERSIST))
-    private FlightInstance flightInstance;
+    /*@OneToMany(cascade = (CascadeType.PERSIST))
+    private FlightInstance flightInstance;*/
     @ManyToOne(cascade = (CascadeType.PERSIST))
     private Airport airport;
     
@@ -53,13 +53,13 @@ public class Flight implements Serializable {
         this.airport = airport;
     }
     
-    public FlightInstance getFlightInstance() {
+    /*public FlightInstance getFlightInstance() {
         return flightInstance;
     }
 
     public void setFlightInstance(FlightInstance flightInstance) {
         this.flightInstance = flightInstance;
-    }
+    }*/
     
     public int getFlightNumber() {
         return flightNumber;
