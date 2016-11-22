@@ -46,7 +46,7 @@ public class FlightsResource {
     @GET
     @Path("/{from}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) {
+    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) {
         JsonObject jo = new JsonObject();
         // TODO: Do real data
         
@@ -57,12 +57,17 @@ public class FlightsResource {
         return jo.toString();
     }
 
-    /**
-     * PUT method for updating or creating an instance of FlightsResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    @GET
+    @Path("/{from}/{to}/{date}/{tickets}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) {
+        JsonObject jo = new JsonObject();
+        
+        jo.addProperty("From", from);
+        jo.addProperty("To", to);
+        jo.addProperty("Date", date);
+        jo.addProperty("Tickets", tickets);
+        
+        return jo.toString();
     }
 }
