@@ -27,46 +27,54 @@ public class Flight implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private int flightId;
     private int flightNumber;
+    private String date;
     private int seats;
     private int flightTime;
-    /*@OneToMany(cascade = (CascadeType.PERSIST))
-    private FlightInstance flightInstance;*/
-    @ManyToOne(cascade = (CascadeType.PERSIST))
-    private Airport airport;
+    private double totalPrice;
+    private int time;
+    private String origin;
+    private String destination;
     
-    public Flight (int flightNumber, int seats, int flightTime) {
+    public Flight (int flightId, int flightNumber, String date, int seats, int flightTime, double totalPrice, int time, String origin, String destination) {
+        this.flightId = flightId;
         this.flightNumber = flightNumber;
+        this.date = date;
         this.seats = seats;
         this.flightTime = flightTime;
+        this.totalPrice = totalPrice;
+        this.time = time;
+        this.origin = origin;
+        this.destination = destination;
     }
 
     public Flight () {
         
     }
 
-    public Airport getAirport() {
-        return airport;
+    public int getFlightId() {
+        return flightId;
     }
 
-    public void setAirport(Airport airport) {
-        this.airport = airport;
-    }
-    
-    /*public FlightInstance getFlightInstance() {
-        return flightInstance;
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
     }
 
-    public void setFlightInstance(FlightInstance flightInstance) {
-        this.flightInstance = flightInstance;
-    }*/
-    
     public int getFlightNumber() {
         return flightNumber;
     }
 
     public void setFlightNumber(int flightNumber) {
         this.flightNumber = flightNumber;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getSeats() {
@@ -84,6 +92,40 @@ public class Flight implements Serializable {
     public void setFlightTime(int flightTime) {
         this.flightTime = flightTime;
     }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    
     
     public Long getId() {
         return id;
