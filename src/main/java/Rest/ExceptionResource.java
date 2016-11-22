@@ -5,6 +5,7 @@
  */
 package Rest;
 
+import Exceptions.FlightException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -34,12 +35,13 @@ public class ExceptionResource {
     /**
      * Retrieves representation of an instance of Rest.ExceptionResource
      * @return an instance of java.lang.String
+     * @throws Exceptions.FlightException
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public String getJson() throws FlightException {
         //TODO return proper representation object
-        throw new UnsupportedOperationException();
+        throw new FlightException(400, 1, "No flights");
     }
 
     /**
