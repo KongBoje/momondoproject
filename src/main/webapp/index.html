@@ -13,9 +13,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
 </head>
 
-<body>
+<body ng-app="myApp">
     <header>
         <nav class="navbar navbar-default">
             <div class="container">
@@ -31,12 +34,15 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#"><span>Fly</span></a></li>
-                        <li><a href="#"><span>Hotel</span></a></li>
+                        <li ng-class=""><a href="#search"><span>Søg</span></a></li>
+                        <li><a href="#results"><span>Søgeresultater</span></a></li>
+                        
+                        <!--
                         <li><a href="#"><span>BIll</span></a></li>
                         <li><a href="#"><span>Trip Finder</span></a></li>
                         <li><a href="#"><span>Pakkerejser</span></a></li>
                         <li><a href="#"><span>Inspiration</span></a></li>
+                        -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span><img src="http://icons.iconarchive.com/icons/custom-icon-design/all-country-flag/24/Denmark-Flag-icon.png" alt=""> Dansk (DKK)</span></a></li>
@@ -46,8 +52,24 @@
             </div>
         </nav>
     </header>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+   <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+   <!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+   
+   <script>
+       var app = angular.module("myApp", ["ngRoute"]);
+       app.config(function($routeProvider) {
+           $routeProvider.
+           when("/search", {
+               templateUrl: "search_refactor.html"
+           }).when("/results", {
+               templateUrl: "results_refactor.html"
+           }).otherwise({
+               redirectTo: "/search"
+           });
+       });
+       </script>
+   <div ng-view></div>
+
 </body>
 
 </html>
