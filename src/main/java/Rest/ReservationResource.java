@@ -10,6 +10,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
@@ -33,21 +34,13 @@ public class ReservationResource {
 
     /**
      * Retrieves representation of an instance of Rest.ReservationResource
+     * @param reservationRequest
      * @return an instance of java.lang.String
      */
-    @GET
+    @POST
+    @Path("/{flightId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
-        //TODO return proper representation object
+    public String getJson(String reservationRequest) {
         throw new UnsupportedOperationException();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of ReservationResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
     }
 }
