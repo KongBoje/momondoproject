@@ -43,8 +43,8 @@ public class FlightsResource {
      * @param tickets
      * @return an instance of java.lang.String
      */
-    @GET
-    @Path("/{from}/{date}/{tickets}")
+    @GET // Fetches available flights from a specific location, given a date
+    @Path("/{from}/{date}/{tickets}") 
     @Produces(MediaType.APPLICATION_JSON)
     public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) {
         JsonObject jo = new JsonObject();
@@ -57,7 +57,7 @@ public class FlightsResource {
         return jo.toString();
     }
 
-    @GET
+    @GET // Fetches available flights from and to a specific location, given a date 
     @Path("/{from}/{to}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
     public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) {
