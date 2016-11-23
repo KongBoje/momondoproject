@@ -16,6 +16,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+    <script src="js/myscript.js" type="text/javascript"></script>
 </head>
 
 <body ng-app="myApp">
@@ -54,20 +55,6 @@
     </header>
    <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
    <!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
-   
-   <script>
-       var app = angular.module("myApp", ["ngRoute"]);
-       app.config(function($routeProvider) {
-           $routeProvider.
-           when("/search", {
-               templateUrl: "search_refactor.html"
-           }).when("/results", {
-               templateUrl: "results_refactor.html"
-           }).otherwise({
-               redirectTo: "/search"
-           });
-       });
-       </script>
    <div ng-view></div>
 
 </body>
