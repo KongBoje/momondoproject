@@ -5,10 +5,13 @@
  */
 package Rest;
 
+import Exceptions.FlightException;
 import Extra.DownloadProxy;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -27,7 +30,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("flights")
 public class FlightsResource {
-    
+
     private static final Gson gson = new Gson();
     private static final DownloadProxy dp = new DownloadProxy();
 
@@ -42,23 +45,34 @@ public class FlightsResource {
 
     /**
      * Retrieves representation of an instance of Rest.FlightsResource
+     *
      * @param from
      * @param date
      * @param tickets
      * @return an instance of java.lang.String
-     * @throws java.io.IOException
+     * @throws Exceptions.FlightException
      */
     @GET // Fetches available flights from a specific location, given a date
-    @Path("/{from}/{date}/{tickets}") 
+    @Path("/{from}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) throws IOException {
-        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/"+from+"/"+date+"/" + tickets);
+    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
+        try {
+            return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + date + "/" + tickets);
+        } catch (IOException ex) {
+            if (ex.getLocalizedMessage().indexOf("code: 400") != -1) throw new FlightException(400, 4, "Unknown error: " + ex.getLocalizedMessage());
+            throw new FlightException(500, 10, "IOException: " + ex.getLocalizedMessage());
+        }
     }
 
     @GET // Fetches available flights from and to a specific location, given a date 
     @Path("/{from}/{to}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) throws IOException {
-        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
+    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
+        try {
+            return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
+        } catch (IOException ex) {
+            if (ex.getLocalizedMessage().indexOf("code: 400") != -1) throw new FlightException(400, 4, "Unknown error: " + ex.getLocalizedMessage());
+            throw new FlightException(500, 10, "IOException: " + ex.getLocalizedMessage());
+        }
     }
 }

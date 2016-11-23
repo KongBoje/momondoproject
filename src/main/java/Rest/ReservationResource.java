@@ -5,8 +5,11 @@
  */
 package Rest;
 
+import Exceptions.FlightException;
 import Extra.DownloadProxy;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -48,7 +51,7 @@ public class ReservationResource {
     @Path("/{flightId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(@PathParam("flightId") String flightId, String reservationRequest) throws IOException {
+    public String getJson(@PathParam("flightId") String flightId, String reservationRequest) throws FlightException {
         String link = "http://airline-plaul.rhcloud.com/api/flightreservation/";
         
         String body = "{  \n" +
@@ -65,6 +68,11 @@ public class ReservationResource {
 "  ]\n" +
 "}";
         
-        return dp.PostHttpRequest(link, body);
+        try {
+            return dp.PostHttpRequest(link, body);
+        } catch (IOException ex) {
+            if(ex.getLocalizedMessage().indexOf("code: 400") != -1) throw new FlightException(400, 4, "Unkown error: " + ex.getLocalizedMessage());
+            throw new FlightException(500, 10, "IOException: " + ex.getLocalizedMessage());
+        }
     }
 }
