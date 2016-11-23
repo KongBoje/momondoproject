@@ -28,9 +28,9 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("reservation")
 public class ReservationResource {
-    
+
     private static final DownloadProxy dp = new DownloadProxy();
-    
+
     @Context
     private UriInfo context;
 
@@ -42,6 +42,7 @@ public class ReservationResource {
 
     /**
      * Retrieves representation of an instance of Rest.ReservationResource
+     *
      * @param flightId
      * @param reservationRequest
      * @return an instance of java.lang.String
@@ -53,26 +54,22 @@ public class ReservationResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@PathParam("flightId") String flightId, String reservationRequest) throws FlightException {
         String link = "http://airline-plaul.rhcloud.com/api/flightreservation/";
-        
-        String body = "{  \n" +
-"  \"flightID\": \"3256-1513036800000\",\n" +
-"  \"numberOfSeats\":1,\n" +
-"  \"reserveeName\":\"Jan Hansen\",\n" +
-"  \"reservePhone\":\"12345678\",\n" +
-"  \"reserveeEmail\":\"jan@hansen.dk\",\n" +
-"  \"passengers\":[  \n" +
-"    {  \n" +
-"      \"firstName\":\"Jan\",\n" +
-"      \"lastName\":\"Hansen\"\n" +
-"    }\n" +
-"  ]\n" +
-"}";
-        
-        try {
-            return dp.PostHttpRequest(link, body);
-        } catch (IOException ex) {
-            if(ex.getLocalizedMessage().indexOf("code: 400") != -1) throw new FlightException(400, 4, "Unkown error: " + ex.getLocalizedMessage());
-            throw new FlightException(500, 10, "IOException: " + ex.getLocalizedMessage());
-        }
+
+        String body = "{  \n"
+                + "  \"flightID\": \"3256-1513036800000\",\n"
+                + "  \"numberOfSeats\":1,\n"
+                + "  \"reserveeName\":\"Jan Hansen\",\n"
+                + "  \"reservePhone\":\"12345678\",\n"
+                + "  \"reserveeEmail\":\"jan@hansen.dk\",\n"
+                + "  \"passengers\":[  \n"
+                + "    {  \n"
+                + "      \"firstName\":\"Jan\",\n"
+                + "      \"lastName\":\"Hansen\"\n"
+                + "    }\n"
+                + "  ]\n"
+                + "}";
+
+        return dp.PostHttpRequest(link, body);
+
     }
 }

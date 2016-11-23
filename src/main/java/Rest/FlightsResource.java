@@ -56,23 +56,13 @@ public class FlightsResource {
     @Path("/{from}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
     public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
-        try {
-            return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + date + "/" + tickets);
-        } catch (IOException ex) {
-            if (ex.getLocalizedMessage().indexOf("code: 400") != -1) throw new FlightException(400, 4, "Unknown error: " + ex.getLocalizedMessage());
-            throw new FlightException(500, 10, "IOException: " + ex.getLocalizedMessage());
-        }
+        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + date + "/" + tickets);
     }
 
     @GET // Fetches available flights from and to a specific location, given a date 
     @Path("/{from}/{to}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
     public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
-        try {
-            return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
-        } catch (IOException ex) {
-            if (ex.getLocalizedMessage().indexOf("code: 400") != -1) throw new FlightException(400, 4, "Unknown error: " + ex.getLocalizedMessage());
-            throw new FlightException(500, 10, "IOException: " + ex.getLocalizedMessage());
-        }
+        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
     }
 }
