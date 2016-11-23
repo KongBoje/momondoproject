@@ -5,13 +5,16 @@
  */
 package Rest;
 
+import Extra.DownloadProxy;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import java.io.IOException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
@@ -26,6 +29,7 @@ import javax.ws.rs.core.MediaType;
 public class FlightsResource {
     
     private static final Gson gson = new Gson();
+    private static final DownloadProxy dp = new DownloadProxy();
 
     @Context
     private UriInfo context;
@@ -42,32 +46,19 @@ public class FlightsResource {
      * @param date
      * @param tickets
      * @return an instance of java.lang.String
+     * @throws java.io.IOException
      */
     @GET // Fetches available flights from a specific location, given a date
     @Path("/{from}/{date}/{tickets}") 
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) {
-        JsonObject jo = new JsonObject();
-        // TODO: Do real data
-        
-        jo.addProperty("From", from);
-        jo.addProperty("Date", date);
-        jo.addProperty("Tickets", tickets);
-        
-        return jo.toString();
+    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) throws IOException {
+        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/"+from+"/"+date+"/" + tickets);
     }
 
     @GET // Fetches available flights from and to a specific location, given a date 
     @Path("/{from}/{to}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) {
-        JsonObject jo = new JsonObject();
-        
-        jo.addProperty("From", from);
-        jo.addProperty("To", to);
-        jo.addProperty("Date", date);
-        jo.addProperty("Tickets", tickets);
-        
-        return jo.toString();
+    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) throws IOException {
+        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
     }
 }
