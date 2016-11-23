@@ -2,3 +2,18 @@ language: java
 jdk: oraclejdk8
 services:
   - mysql
+
+before_script:
+  - mysql -e 'create database mmp;'
+
+test:
+  adapter: mysql2
+  database: mmp
+  username: root
+  encoding: utf8
+
+mysql: &mysql
+  adapter: mysql2
+  username: root
+  password: root
+  database: strano_<%= Rails.env %>
