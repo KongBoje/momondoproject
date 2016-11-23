@@ -16,33 +16,33 @@ import org.junit.Before;
 
 public class Tests {
 
-    private EntityManagerFactory entityManagerFactory;
-
-    @Before
-    public void init() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("mmp");
-    }
-
-    @After
-    public void destroy() {
-        entityManagerFactory.close();
-    }
-
-    @Test
-    public void connection() {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-
-        Flight flight = new Flight();
-        entityManager.persist(flight);
-
-        Flight dbFlight = entityManager.createQuery(
-                "select e "
-                + "from Flight e", Flight.class)
-                .getSingleResult();
-        assertEquals(flight.getFlightId(), dbFlight.getFlightId());
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
-    }
+//    private EntityManagerFactory entityManagerFactory;
+//
+//    @Before
+//    public void init() {
+//        entityManagerFactory = Persistence.createEntityManagerFactory("mmp");
+//    }
+//
+//    @After
+//    public void destroy() {
+//        entityManagerFactory.close();
+//    }
+//
+//    @Test
+//    public void connection() {
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        entityManager.getTransaction().begin();
+//
+//        Flight flight = new Flight();
+//        entityManager.persist(flight);
+//
+//        Flight dbFlight = entityManager.createQuery(
+//                "select e "
+//                + "from Flight e", Flight.class)
+//                .getSingleResult();
+//        assertEquals(flight.getFlightId(), dbFlight.getFlightId());
+//
+//        entityManager.getTransaction().commit();
+//        entityManager.close();
+//    }
 }
