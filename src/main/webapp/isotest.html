@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+        
+        -->
+        
+        <script>
+            var app = angular.module("myApp", []);
+            
+            app.controller("myCtrl", ["$scope", function($scope) {
+               $scope.mydate = "2016-23-11";
+               $scope.myfunc = function() {
+                   alert($scope.mydate + "T00:00:00.000Z");
+               };
+            }]);
+        </script>
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl as ctrl">
+        
+        <div>TODO write content</div>
+        <input type="text" ng-model="mydate" placeholder="YYYY-MM-DD">
+        <div>Test {{mydate}}T00:00:00.000Z</div>
+
+        <button ng-click="myfunc()">Click me</button>
+        
+    </body>
+</html>
