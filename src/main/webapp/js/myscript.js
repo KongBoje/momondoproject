@@ -59,9 +59,11 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
                     method: "GET",
                     url: "api/flights/" + $scope.fromIATA + "/" + $scope.onDate + "T00:00:00.000Z" + "/" + passengers
                 }).then(function callback(response) {
+
                     dataContainer.set(response.data);
                     $scope.results = dataContainer.get();
                     $location.path("/results");
+
                 });
 
             } else {
@@ -70,9 +72,11 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
                     method: "GET",
                     url: "api/flights/" + $scope.fromIATA + "/" + $scope.toIATA + "/" + $scope.onDate + "T00:00:00.000Z" + "/" + passengers
                 }).then(function callback(response) {
+
                     dataContainer.set(response.data);
                     $scope.results = dataContainer.get();
                     $location.path("/results");
+
                 });
             }
 

@@ -22,6 +22,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import EntityV2.Airline;
+import EntityV2.Flight;
+import java.util.ArrayList;
 
 /**
  * REST Web Service
@@ -50,19 +53,61 @@ public class FlightsResource {
      * @param date
      * @param tickets
      * @return an instance of java.lang.String
-     * @throws Exceptions.FlightException
      */
     @GET // Fetches available flights from a specific location, given a date
     @Path("/{from}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
-        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + date + "/" + tickets);
+    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) {
+        ArrayList<EntityV2.Airline> airlines = new ArrayList<>();
+
+        String larsAirline;
+        String kaffeAirline;
+        try {
+            larsAirline = dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + date + "/" + tickets);
+            EntityV2.Airline a1 = gson.fromJson(larsAirline, EntityV2.Airline.class);
+            airlines.add(a1);
+        } catch (FlightException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
+
+        try {
+            kaffeAirline = dp.GetHttpRequest("http://46.101.174.179/momondodata/api/flights/" + from + "/" + date + "/" + tickets);
+            EntityV2.Airline a2 = gson.fromJson(kaffeAirline, EntityV2.Airline.class);
+            airlines.add(a2);
+
+        } catch (FlightException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
+
+        return gson.toJson(airlines);
     }
 
     @GET // Fetches available flights from and to a specific location, given a date 
     @Path("/{from}/{to}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
-        return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
+    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) {
+        ArrayList<EntityV2.Airline> airlines = new ArrayList<>();
+        String larsAirline;
+        String kaffeAirline;
+        
+        try {
+            larsAirline = dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
+            EntityV2.Airline a1 = gson.fromJson(larsAirline, EntityV2.Airline.class);
+            airlines.add(a1);
+        } catch (FlightException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
+
+        try {
+            kaffeAirline = dp.GetHttpRequest("http://46.101.174.179/momondodata/api/flights/" + from + "/" + to + "/" + date + "/" + tickets);
+            EntityV2.Airline a2 = gson.fromJson(kaffeAirline, EntityV2.Airline.class);
+            airlines.add(a2);
+
+        } catch (FlightException ex) {
+            System.out.println(ex.getLocalizedMessage());
+        }
+        
+        return gson.toJson(airlines);
+        //return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
     }
 }
