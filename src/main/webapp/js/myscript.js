@@ -10,10 +10,17 @@ var app = angular.module("myApp", ["ngRoute"]);
 app.config(function ($routeProvider) {
     $routeProvider.
             when("/search", {
-                templateUrl: "search_refactor.html"
+                templateUrl: "search_refactor.html",
+        controller: "searchCtrl"
             }).when("/results", {
         templateUrl: "results_refactor.html"
     }).otherwise({
         redirectTo: "/search"
     });
 });
+
+app.controller("searchCtrl", ["$scope", function($scope) {
+    $scope.searchFunc = function() {
+        alert("clicked");
+    }
+}])
