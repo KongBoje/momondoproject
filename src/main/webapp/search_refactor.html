@@ -1,7 +1,7 @@
 <div class="search-section text-center">
         <form class="form-inline">
             <div class="container">
-                <h1><img src="images/plane.png" alt=""><span>Sammenlign <strong>billige flybilletter og hoteller</strong></span></h1>
+                <h1><img src="images/plane.png" alt=""><span>Sammenlign <strong>billige flybilletter og hoteller {{results.airline}}</strong></span></h1>
                 <div class="tab-sections">
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active">
@@ -20,20 +20,20 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="Fra IATA fx CPH" aria-describedby="">
+                                        <input type="text" class="form-control" placeholder="fx CPH" aria-describedby="" ng-model="fromIATA">
                                     </div>
                                 </div>
                                 <a href="#" class="direct"><img width="15" src="images/icon_2.jpg" alt=""></a>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="Til IATA fx STN" aria-describedby="">
+                                        <input type="text" class="form-control" placeholder="fx SXF" aria-describedby="" ng-model="toIATA">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control date-field" placeholder="2016-01-11" aria-describedby="">
+                                        <input type="text" class="form-control" placeholder="fx 2017-01-20" aria-describedby="" ng-model="onDate">
                                     </div>
                                 </div>
                                 <!--
@@ -48,7 +48,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
                                         <div class="custom-select">
-                                             <select class="form-control" aria-describedby="">
+                                             <select class="form-control" aria-describedby="" ng-model="passengerCount">
                                             <option>1 Passanger</option>
                                             <option>2 Passanger</option>
                                             <option>3 Passanger</option>
