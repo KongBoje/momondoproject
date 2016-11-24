@@ -11,7 +11,7 @@ import java.util.List;
 public interface IFlightFacade {
     
     //Fetches a flight based on the flightId
-    Flight getFlight(Long id);
+    Flight getFlight(Integer id);
     
     //Adds a flight to the DB, taking a flight object and converts it.
     Flight addFlight(Flight flight);

@@ -23,15 +23,13 @@ public class FlightFacade implements IFlightFacade {
     }
 
     @Override
-    public Flight getFlight(Long id) {
+    public Flight getFlight(Integer id) {
         Flight F = null;
         try {
-            em.getTransaction().begin();
             F = em.find(Flight.class, id);
         } finally {
             em.close();
         }
-        em.close();
         return F;
         
     }
@@ -44,7 +42,7 @@ public class FlightFacade implements IFlightFacade {
                 em.persist(f);
                 em.getTransaction().commit();
             } finally {
-                em.close();
+                //em.close();
             }
         return f;
     }
