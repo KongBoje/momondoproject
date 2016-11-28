@@ -6,9 +6,8 @@
 package Facade;
 
 import Entity.Flight;
-import Entity.ReservationRequest;
-import Entity.ReservationResponse;
-import Interface.IReservationFacade;
+import Entity.User;
+import Interface.IUserFacade;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,60 +17,64 @@ import javax.persistence.Persistence;
  *
  * @author Martin
  */
-public class ReservationFacade implements IReservationFacade {
+public class UserFacade implements IUserFacade {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("mmp");
     private static EntityManager em = emf.createEntityManager();
     
     @Override
-    public ReservationResponse getReservation(Integer id) {
+    public User getUser(Integer id) {
     
-        ReservationResponse r;
+        User u = null;
         try {
-            r = em.find(ReservationResponse.class, id);
+            u = em.find(User.class, id);            
         } finally {
             em.close();
         }
-        return r;
+        return u;
         
     }
-        
-    
 
     @Override
-    public boolean addReservation(ReservationResponse reservation) {
+    public boolean addUser(User u) {
+        
             try {
                 em.getTransaction().begin();
-                em.persist(reservation);
+                em.persist(u);
                 em.getTransaction().commit();
-            } finally {
+            } catch(Exception e){
+                    return false;
+                    }
+            
+            finally {
                 em.close();
+                
             }
         return true;
-        
     }
 
     @Override
-    public boolean deleteReservation(Long id) {
-        try{
-            
+    public boolean deleteUser(Integer id) {
+        
+        User u = null;
+        try {
             em.getTransaction().begin();
-            em.find(ReservationResponse.class, id);
-            em.remove(id);
+            u = em.find(User.class, id);
+            em.remove(u);
             em.getTransaction().commit();
-        } finally{
+        } finally {
             em.close();
         }
         return true;
+        
     }
 
     @Override
-    public List<ReservationRequest> getAllReservations() {
-       List<ReservationRequest> result = em.createQuery("SELECT e FROM ReservationResponse e").getResultList();
-       em.close();
-       return result;
-    }
+    public List<User> getAllUsers() {
+        List<User> result = em.createQuery("SELECT e FROM User e").getResultList();
 
-    
+        em.close();
+        return result;
+    }
     
 }

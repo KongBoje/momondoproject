@@ -6,9 +6,9 @@
     <class>Entity.Airport</class>
     <class>Entity.Flight</class>
     <class>Entity.FlightInstance</class>
-    <class>Entity.Reservation</class>
-    <class>Entity.ReservationRequest</class>
+    <class>Entity.Passenger</class>
     <class>Entity.ReservationResponse</class>
+    <class>Entity.User</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mmp?zeroDateTimeBehavior=convertToNull"/>

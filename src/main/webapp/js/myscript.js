@@ -24,13 +24,16 @@ app.factory("dataContainer", function () {
 
 app.config(function ($routeProvider) {
     $routeProvider.
-            when("/search", {
+        when("/search", {
                 templateUrl: "search_refactor.html",
                 controller: "searchCtrl"
-            }).when("/results", {
+        }).when("/results", {
         templateUrl: "results_refactor.html",
         controller: "searchCtrl"
-    }).otherwise({
+        }).when("/reserve", {
+            templateUrl: "reserveflight.html",
+            controller: "searchCtrl"
+        }).otherwise({
         redirectTo: "/search"
     });
 });

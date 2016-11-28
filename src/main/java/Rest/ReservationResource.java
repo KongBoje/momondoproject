@@ -7,6 +7,8 @@ package Rest;
 
 import Exceptions.FlightException;
 import Extra.DownloadProxy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,9 +28,10 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Lasse
  */
-@Path("reservation")
+@Path("wrapreservation")
 public class ReservationResource {
 
+    private static final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     private static final DownloadProxy dp = new DownloadProxy();
 
     @Context
@@ -44,32 +47,16 @@ public class ReservationResource {
      * Retrieves representation of an instance of Rest.ReservationResource
      *
      * @param flightId
-     * @param reservationRequest
+     * @param reservationRequestBody
      * @return an instance of java.lang.String
-     * @throws java.io.IOException
+     * @throws Exceptions.FlightException
      */
     @POST
     @Path("/{flightId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(@PathParam("flightId") String flightId, String reservationRequest) throws FlightException {
-        String link = "http://airline-plaul.rhcloud.com/api/flightreservation/";
-
-        String body = "{  \n"
-                + "  \"flightID\": \"3256-1513036800000\",\n"
-                + "  \"numberOfSeats\":1,\n"
-                + "  \"reserveeName\":\"Jan Hansen\",\n"
-                + "  \"reservePhone\":\"12345678\",\n"
-                + "  \"reserveeEmail\":\"jan@hansen.dk\",\n"
-                + "  \"passengers\":[  \n"
-                + "    {  \n"
-                + "      \"firstName\":\"Jan\",\n"
-                + "      \"lastName\":\"Hansen\"\n"
-                + "    }\n"
-                + "  ]\n"
-                + "}";
-
-        return dp.PostHttpRequest(link, body);
-
+    public String getJson(@PathParam("flightId") String flightId, String reservationRequestBody) throws FlightException {
+        String link = "http://airline-plaul.rhcloud.com/api/flightreservation";
+        return dp.PostHttpRequest(link, reservationRequestBody);
     }
 }
