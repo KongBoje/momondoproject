@@ -14,7 +14,7 @@ import org.junit.Test;
 public class FacadeTest {
     FlightFacade ff = new FlightFacade();
     public FacadeTest() {
-        Persistence.generateSchema("0PU", null);
+        Persistence.generateSchema("mmp", null);
     }
 //    @Test
 //    public void flightCreation(){
@@ -35,8 +35,8 @@ public class FacadeTest {
 //    }
     @Test
     public void flightSearchFromAndTo() {
-        Flight testFlight1 = new Flight(2983248, 2354124, "butts", 34, 333, 203.33, 2143, "CPP", "MOW");
-        Flight testFlight2 = new Flight(2983248, 2354124, "butts", 34, 333, 203.33, 2143, "CPP", "MOW");
+        Flight testFlight1 = new Flight("2983248", "2354124", "butts", 34, 333, 2143, "CPP", "MOW");
+        Flight testFlight2 = new Flight("2983248", "2354124", "butts", 34, 333, 2143, "CPP", "MOW");
         ff.addFlight(testFlight1);
         ff.addFlight(testFlight2);
         List<Flight> flights = new ArrayList<>();
