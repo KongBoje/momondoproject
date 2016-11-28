@@ -26,13 +26,13 @@ public class Airline implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String airline;
     
     @OneToMany(cascade = (CascadeType.PERSIST))
     private List<Flight> flights = new ArrayList();
     
     public Airline(String name) {
-        this.name = name;
+        this.airline = name;
     }
     
     public Airline() {
@@ -52,11 +52,11 @@ public class Airline implements Serializable {
     }
     
     public String getName() {
-        return name;
+        return airline;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.airline = name;
     }
     
     public Long getId() {

@@ -27,38 +27,36 @@ public class Flight implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String flightId;
+    private String flightID;
     private String flightNumber;
     private String date;
-    private int seats;
-    private int flightTime;
+    private int numberOfSeats;
     private double totalPrice;
-    private int time;
+    private int traveltime;
     private String origin;
     private String destination;
-    
-    public Flight (String flightId, String flightNumber, String date, int seats, int flightTime, double totalPrice, int time, String origin, String destination) {
-        this.flightId = flightId;
+
+    public Flight(String flightID, String flightNumber, String date, int seats, int flightTime, double totalPrice, int time, String origin, String destination) {
+        this.flightID = flightID;
         this.flightNumber = flightNumber;
         this.date = date;
-        this.seats = seats;
-        this.flightTime = flightTime;
+        this.numberOfSeats = seats;
+        this.traveltime = flightTime;
         this.totalPrice = totalPrice;
-        this.time = time;
         this.origin = origin;
         this.destination = destination;
     }
 
-    public Flight () {
-        
+    public Flight() {
+
     }
 
     public String getFlightId() {
-        return flightId;
+        return flightID;
     }
 
     public void setFlightId(String flightId) {
-        this.flightId = flightId;
+        this.flightID = flightId;
     }
 
     public String getFlightNumber() {
@@ -78,19 +76,19 @@ public class Flight implements Serializable {
     }
 
     public int getSeats() {
-        return seats;
+        return numberOfSeats;
     }
 
     public void setSeats(int seats) {
-        this.seats = seats;
+        this.numberOfSeats = seats;
     }
 
     public int getFlightTime() {
-        return flightTime;
+        return traveltime;
     }
 
     public void setFlightTime(int flightTime) {
-        this.flightTime = flightTime;
+        this.traveltime = flightTime;
     }
 
     public double getTotalPrice() {
@@ -99,14 +97,6 @@ public class Flight implements Serializable {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
     }
 
     public String getOrigin() {
@@ -125,8 +115,6 @@ public class Flight implements Serializable {
         this.destination = destination;
     }
 
-    
-    
     public Integer getId() {
         return id;
     }
@@ -159,5 +147,5 @@ public class Flight implements Serializable {
     public String toString() {
         return "Entity.Flight[ id=" + id + " ]";
     }
-    
+
 }
