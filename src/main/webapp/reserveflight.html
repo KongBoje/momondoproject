@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<br><br><br><br>
+<h2>This is the flight reservation page</h2>
+
+<!-- Angular cannot auto generate input fields so lets hardcode 5 -->
+<form>
+    <strong>Flight ID</strong>: (FlightID goes here<br>
+    <span>Amount of passengers</span><input type="number" ng-model="passengerCount" min="1" max="5">
+    <br>
+    <br>
+    <input type="text" ng-model="passengers[0].firstName">
+    <input type="text" ng-model="passengers[0].lastName">
+    <br>
+
+    <input type="text" ng-model="passengers[1].firstName" ng-show="passengerCount >= 2">
+    <input type="text" ng-model="passengers[1].lastName" ng-show="passengerCount >= 2">
+    <br>
+
+    <input type="text" ng-model="passengers[2].firstName" ng-show="passengerCount >= 3">
+    <input type="text" ng-model="passengers[2].lastName" ng-show="passengerCount >= 3">
+    <br>
+
+    <input type="text" ng-model="passengers[3].firstName" ng-show="passengerCount >= 4">
+    <input type="text" ng-model="passengers[3].lastName" ng-show="passengerCount >= 4">
+    <br>
+
+    <input type="text" ng-model="passengers[4].firstName" ng-show="passengerCount >= 5">
+    <input type="text" ng-model="passengers[4].lastName" ng-show="passengerCount >= 5">
+    <br>
+</form>
