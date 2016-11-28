@@ -38,12 +38,14 @@ public class ReservationRequest implements Serializable {
     @Expose
     private ArrayList<Passenger> passengers = new ArrayList<Passenger>();
 
-    public ReservationRequest(String flightID, int numberOfSeats, String reserveeName, String reservePhone, String reserveeEmail) {
+    public ReservationRequest(Long id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {
+        this.id = id;
         this.flightID = flightID;
         this.numberOfSeats = numberOfSeats;
         this.reserveeName = reserveeName;
         this.reservePhone = reservePhone;
         this.reserveeEmail = reserveeEmail;
+        this.numberOfSeats = 0;
     }
 
     public String getFlightID() {
@@ -96,6 +98,7 @@ public class ReservationRequest implements Serializable {
 
     public void addPassenger(Passenger p) {
         this.passengers.add(p);
+        this.numberOfSeats++;
     }
 
     public Long getId() {
