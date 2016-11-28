@@ -23,9 +23,11 @@ public class Reservation implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double totalPrice;
+    private int passengers;
     
     public Reservation (double totalPrice) {
         this.totalPrice = totalPrice;
+        this.passengers = passengers;
     }
     
     public Reservation() {
@@ -42,6 +44,14 @@ public class Reservation implements Serializable {
     
     public Long getId() {
         return id;
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(int passengers) {
+        this.passengers = passengers;
     }
 
     public void setId(Long id) {
@@ -70,6 +80,8 @@ public class Reservation implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Reservation[ id=" + id + " ]";
-    }   
+        return "Reservation{" + "id=" + id + ", totalPrice=" + totalPrice + ", passengers=" + passengers + '}';
+    }
+
+     
 }
