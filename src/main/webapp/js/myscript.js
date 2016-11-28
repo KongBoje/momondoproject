@@ -40,6 +40,11 @@ app.config(function ($routeProvider) {
 
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
         $scope.results = dataContainer.get();
+        
+        $scope.testmsg = function() {
+            console.log($scope.passengers);
+        }
+        
         $scope.searchFunc = function () {
 
             if ($scope.fromIATA === undefined) {
