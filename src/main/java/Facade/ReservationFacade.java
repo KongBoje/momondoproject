@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import Entity.Reservation;
+import Entity.ReservationResponse;
 import Interface.IReservationFacade;
 import java.util.List;
 
@@ -16,12 +16,12 @@ import java.util.List;
 public class ReservationFacade implements IReservationFacade {
 
     @Override
-    public Reservation getReservation(Integer id) {
+    public ReservationResponse getReservation(Integer id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Reservation addReservation(Reservation reservation) {
+    public ReservationResponse addFlight(ReservationResponse reservation) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -31,8 +31,10 @@ public class ReservationFacade implements IReservationFacade {
     }
 
     @Override
-    public List<Reservation> getAllReservations() {
+    public List<ReservationResponse> getAllReservations() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
     
 }
