@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import Entity.Reservation;
+import Entity.ReservationResponse;
 import java.util.List;
 
 /**
@@ -15,15 +15,15 @@ import java.util.List;
 public interface IReservationFacade {
 
 //Fetches a reservation based on the reservation's Id
-Reservation getReservation(Integer id);
+ReservationResponse getReservation(Integer id);
 
 //Adds a reservation to the DB, taking a reservation object and converts it 
-Reservation addFlight(Reservation reservation);
+ReservationResponse addFlight(ReservationResponse reservation);
 
 //Removes a reservation-object from the DB basted on its id.
 Boolean deleteReservation(Long id);    
     
 //Creates List of reservation from all reservation instances.
-List<Reservation> getAllReservations();
+List<ReservationResponse> getAllReservations();
 
 }
