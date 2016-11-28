@@ -31,7 +31,7 @@ import java.util.ArrayList;
  *
  * @author Lasse
  */
-@Path("flights")
+@Path("allflights")
 public class FlightsResource {
 
     private static final Gson gson = new Gson();
