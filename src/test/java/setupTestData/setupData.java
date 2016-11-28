@@ -1,17 +1,21 @@
 package setupTestData;
 
 import Entity.Flight;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+import java.sql.DriverManager;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+import javax.swing.JOptionPane;
 
 public class setupData {
     public static void setup() {
-        /*Generate schema 1 gang og derefter udkommenter det.*/
+
+    /*Generate schema 1 gang og derefter udkommenter det.*/
         GenerateSchema gs = new GenerateSchema();
         gs.initSchema();
-        
+
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("mmp");
         EntityManager em = emf.createEntityManager();
         
@@ -24,7 +28,7 @@ public class setupData {
         
         f.setFlightId("5342-5374581236347");
         f.setFlightNumber("KAF6666");
-        f.setDate("2016-11-22T12:00:00.000Z");
+        f.setDate("2017-11-22T12:00:00.000Z");
         f.setSeats(6);
         f.setTotalPrice(67);
         f.setFlightTime(240);
@@ -77,7 +81,6 @@ public class setupData {
         em.getTransaction().commit();
         em.close();
     }
-    
     public static void main(String[] args) {
         setup();
     }
