@@ -31,18 +31,18 @@ public class Flight implements Serializable {
     private String flightNumber;
     private String date;
     private int numberOfSeats;
-    private double totalPrice;
+    private int totalPrice;
     private int traveltime;
     private String origin;
     private String destination;
 
-    public Flight(String flightID, String flightNumber, String date, int seats, int flightTime, double totalPrice, int time, String origin, String destination) {
+    public Flight(String flightID, String flightNumber, String date, int numberOfSeats, int totalPrice, int traveltime, String origin, String destination) {
         this.flightID = flightID;
         this.flightNumber = flightNumber;
         this.date = date;
-        this.numberOfSeats = seats;
-        this.traveltime = flightTime;
+        this.numberOfSeats = numberOfSeats;
         this.totalPrice = totalPrice;
+        this.traveltime = traveltime;
         this.origin = origin;
         this.destination = destination;
     }
@@ -95,7 +95,7 @@ public class Flight implements Serializable {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
 
