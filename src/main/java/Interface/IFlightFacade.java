@@ -28,4 +28,9 @@ public interface IFlightFacade {
     //Adds an Airport to the DB, based on the object.
     Airport addAirport(Airport airport);
     
+    //Creates a list with Flight-Objects from all Flights in DB fitting the criteria
+    List<Flight> getFlightsFromDate(String origin, String date, int seats);
+    
+    List<Flight> getFlightsFromTo(String origin, String destination, String date, int seats);
+    
 }

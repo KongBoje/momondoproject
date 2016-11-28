@@ -12,9 +12,10 @@ package Exceptions;
 public class FlightException extends Exception {
 
     public final int httpError;
-    public final int errorCode;
+    public final int errorCode; 
     public final String message;
     
+    //Constructer for vores FlightExcepion
     public FlightException(int httpError, int errorCode, String message) {
         this.httpError = httpError;
         this.errorCode = errorCode;

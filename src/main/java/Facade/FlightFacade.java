@@ -68,6 +68,22 @@ public class FlightFacade implements IFlightFacade {
         em.close();
         return result;
     }
+    
+    @Override
+    public List<Flight> getFlightsFromDate(String origin, String date, int seats) {
+        List<Flight> result = em.createQuery("SELECT e FROM Flight e WHERE e.origin = :origin AND e.date = :date AND e.numberOfSeats = :seats").setParameter("origin", origin).setParameter("date", date).setParameter("seats", seats).getResultList();
+
+        //em.close();
+        return result;
+    }
+
+    @Override
+    public List<Flight> getFlightsFromTo(String origin, String destination, String date, int seats) {
+        List<Flight> result = em.createQuery("SELECT e FROM Flight e WHERE e.origin = :origin AND e.destination = :destination AND e.date = :date AND e.numberOfSeats = :seats").setParameter("origin", origin).setParameter("destination", destination).setParameter("date", date).setParameter("seats", seats).getResultList();
+
+        //em.close();
+        return result;
+    }
 
     @Override
     public FlightInstance addFlightInstance(FlightInstance flightInstance) {
