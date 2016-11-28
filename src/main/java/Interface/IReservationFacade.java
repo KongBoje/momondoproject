@@ -18,7 +18,7 @@ public interface IReservationFacade {
 Reservation getReservation(Integer id);
 
 //Adds a reservation to the DB, taking a reservation object and converts it 
-Reservation addFlight(Reservation reservation);
+Reservation addReservation(Reservation reservation);
 
 //Removes a reservation-object from the DB basted on its id.
 Boolean deleteReservation(Long id);    

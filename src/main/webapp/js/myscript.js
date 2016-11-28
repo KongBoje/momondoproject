@@ -40,7 +40,7 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
         $scope.searchFunc = function () {
 
             if ($scope.fromIATA === undefined) {
-                alert("Fill in a from airpor");
+                alert("Fill in a from airport");
                 return;
             }
             if ($scope.onDate === undefined) {
