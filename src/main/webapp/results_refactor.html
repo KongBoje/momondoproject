@@ -30,7 +30,7 @@
                             <td>{{f.traveltime}}</td>
                             <td>{{f.origin}}</td>
                             <td>{{f.destination}}</td>
-                            <td><a ng-href="#reserve">Reservation</a></td>
+                            <td><a ng-href="#reserve" ng-click="gotoReserve(f.flightNumber)">Reservation</a></td>
                         </tr>
                     </tbody>
                 </table>
