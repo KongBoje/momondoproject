@@ -8,6 +8,9 @@ package Entity;
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +39,9 @@ public class ReservationRequest implements Serializable {
     @Expose
     private String reserveeEmail;
     @Expose
-    private ArrayList<Passenger> passengers = new ArrayList<Passenger>();
+    @ElementCollection
+    @CollectionTable(name="passengers")
+    private List<Passenger> passengers = new ArrayList<>();
 
     public ReservationRequest(Integer id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {
         this.id = id;
@@ -92,11 +97,11 @@ public class ReservationRequest implements Serializable {
         this.reserveeEmail = reserveeEmail;
     }
 
-    public ArrayList<Passenger> getPassengers() {
+    public List<Passenger> getPassengers() {
         return passengers;
     }
 
-    public void setPassengers(ArrayList<Passenger> passengers) {
+    public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
     }
 
