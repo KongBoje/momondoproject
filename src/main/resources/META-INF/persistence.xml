@@ -6,8 +6,10 @@
     <class>Entity.Airport</class>
     <class>Entity.Flight</class>
     <class>Entity.FlightInstance</class>
-    <class>Entity.Passenger</class>
+    <class>Entity.Reservation</class>
+    <class>Entity.ReservationRequest</class>
     <class>Entity.ReservationResponse</class>
+    <class>Entity.Passenger</class>
     <class>Entity.User</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
