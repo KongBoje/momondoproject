@@ -5,8 +5,10 @@
  */
 package Entity;
 
+import Exceptions.FlightException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,16 +29,16 @@ public class Airline implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String airline;
-    
+
     @OneToMany(cascade = (CascadeType.PERSIST))
     private List<Flight> flights = new ArrayList();
-    
+
     public Airline(String name) {
         this.airline = name;
     }
-    
+
     public Airline() {
-        
+
     }
 
     public List<Flight> getFlights() {
@@ -46,11 +48,11 @@ public class Airline implements Serializable {
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
     }
-    
+
     public void addFlight(Flight flight) {
         flights.add(flight);
     }
-    
+
     public String getName() {
         return airline;
     }
@@ -58,7 +60,7 @@ public class Airline implements Serializable {
     public void setName(String name) {
         this.airline = name;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -91,5 +93,5 @@ public class Airline implements Serializable {
     public String toString() {
         return "Entity.Airline[ id=" + id + " ]";
     }
-    
+
 }

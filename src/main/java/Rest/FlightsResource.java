@@ -7,8 +7,10 @@ package Rest;
 
 import Entity.Airline;
 import Entity.Flight;
+import Exceptions.FlightException;
 import com.google.gson.Gson;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -26,7 +28,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("flights")
 public class FlightsResource {
-    
+
     private static final Gson gson = new Gson();
 
     ArrayList<Flight> flightList = new ArrayList<Flight>() {
@@ -38,6 +40,8 @@ public class FlightsResource {
             add(new Flight("6464-0192837465951", "KAF1113", "2017-02-01T00:00:00.000Z", 14, 200, 210, "SXF", "CPH"));
         }
     };
+    
+    private static final HashMap<String, Boolean> VALIDPLACES = new HashMap<>();
 
     @Context
     private UriInfo context;
@@ -46,37 +50,71 @@ public class FlightsResource {
      * Creates a new instance of FlightsResource
      */
     public FlightsResource() {
+        VALIDPLACES.put("cph", true);
+        VALIDPLACES.put("sxf", true);
+        VALIDPLACES.put("stn", true);
+        VALIDPLACES.put("cdg", true);
+        VALIDPLACES.put("bcn", true);
     }
 
     /**
      * Retrieves representation of an instance of Rest.FlightsResource
+     *
+     * @param from
+     * @param date
+     * @param tickets
      * @return an instance of java.lang.String
+     * @throws Exceptions.FlightException
      */
     @GET // Fetches available flights from a specific location, given a date
     @Path("/{from}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) {
+    public String fromDate(@PathParam("from") String from, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
+       
+        if(VALIDPLACES.get(from.toLowerCase()) == null) throw new FlightException(400, 3, "The from place is invalid");
+        if(tickets == 0) throw new FlightException(400, 3, "No tickets");
+        
+        // Let's assume we wil not run out of tickets
+        
+                
         Airline airline = new Airline("Kaffemænd Tours");
-        for(Flight x : flightList) {
-            if(x.getDate().equals(date) && x.getOrigin().equals(from)) {
+        for (Flight x : flightList) {
+            if (x.getDate().equals(date) && x.getOrigin().equals(from)) {
+                
                 airline.addFlight(x);
             }
         }
+        //System.out.println("Length: " + airline.getFlights().size());
         String res = gson.toJson(airline);
+
+        if (airline.getFlights().isEmpty()) {
+            throw new FlightException(400, 1, "There were no flights");
+        }
+
         return res;
     }
 
     /**
      * PUT method for updating or creating an instance of FlightsResource
-     * @param content representation for the resource
+     *
+     * @param from
+     * @param to
+     * @param date
+     * @param tickets
+     * @return 
+     * @throws Exceptions.FlightException 
      */
     @GET // Fetches available flights from and to a specific location, given a date 
     @Path("/{from}/{to}/{date}/{tickets}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) {
+    public String fromToDateTick(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("tickets") int tickets) throws FlightException {
+        if(VALIDPLACES.get(to.toLowerCase()) == null) throw new FlightException(400, 3, "The to place is invalid");
+        if(VALIDPLACES.get(from.toLowerCase()) == null) throw new FlightException(400, 3, "The from place is invalid");
+        if(tickets == 0) throw new FlightException(400, 3, "No tickets");
+        
         Airline airline = new Airline("Kaffemænd Tours");
-        for(Flight x : flightList) {
-            if(x.getDate().equals(date) && x.getOrigin().equals(from) && x.getDestination().equals(to)) {
+        for (Flight x : flightList) {
+            if (x.getDate().equals(date) && x.getOrigin().equals(from) && x.getDestination().equals(to)) {
                 airline.addFlight(x);
             }
         }
