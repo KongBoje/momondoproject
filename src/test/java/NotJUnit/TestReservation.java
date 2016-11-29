@@ -22,7 +22,7 @@ public class TestReservation {
     private static final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
     
     public static void main(String[] args) throws FlightException {
-        ReservationRequest r = new ReservationRequest(555L, "2335-1510448400000", "Jan Hansen", "12345678", "jan@hansen.dk");
+        ReservationRequest r = new ReservationRequest(555, "2335-1510448400000", "Jan Hansen", "12345678", "jan@hansen.dk");
         Passenger p1 = new Passenger("Jan", "Hansen");
         Passenger p2 = new Passenger("Jane", "Hansen");
         
