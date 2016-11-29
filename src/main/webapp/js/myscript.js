@@ -13,32 +13,32 @@ app.factory("dataContainer", function () {
     var flightnum = null;
     var flightid = null;
     var passengerQty = null;
-    
-    factory.setQty = function(data) {
+
+    factory.setQty = function (data) {
         passengerQty = data;
     };
-    
-    factory.getQty = function() {
+
+    factory.getQty = function () {
         return passengerQty;
     };
 
     factory.set = function (data) {
         myresults = data;
     };
-    
-    factory.setfn = function(data) {
+
+    factory.setfn = function (data) {
         flightnum = data;
     };
-    
-    factory.getfn = function() {
+
+    factory.getfn = function () {
         return flightnum;
     };
-    
-    factory.getfid = function() {
+
+    factory.getfid = function () {
         return flightid;
     };
-    
-    factory.setfid = function(data) {
+
+    factory.setfid = function (data) {
         flightid = data;
     };
 
@@ -51,30 +51,32 @@ app.factory("dataContainer", function () {
 
 app.config(function ($routeProvider) {
     $routeProvider.
-        when("/search", {
+            when("/search", {
                 templateUrl: "search_refactor.html",
                 controller: "searchCtrl"
-        }).when("/results", {
+            }).when("/results", {
         templateUrl: "results_refactor.html",
         controller: "searchCtrl"
-        }).when("/reserve", {
-            templateUrl: "reserveflight.html",
-            controller: "searchCtrl"
-        }).otherwise({
+    }).when("/reserve", {
+        templateUrl: "reserveflight.html",
+        controller: "searchCtrl"
+    }).otherwise({
         redirectTo: "/search"
     });
 });
 
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
         $scope.results = dataContainer.get();
-        
-        $scope.gotoReserve = function(fid, fn) {
+
+        $scope.gotoReserve = function (fid, fn) {
             dataContainer.setfid(fid);
             dataContainer.setfn(fn);
-           // alert("something");
+            // alert("something");
         };
-        
-        $scope.doReserve = function() {
+
+
+
+        $scope.doReserve = function () {
             var req = {
                 flightID: dataContainer.getfid(),
                 numberOfSeats: parseInt(dataContainer.getQty()),
@@ -83,14 +85,14 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
                 reserveeEmail: "president@whitehouse.gov",
                 passengers: []
             };
-            
-            for(var i = 0; i != dataContainer.getQty(); i++) {
+
+            for (var i = 0; i != dataContainer.getQty(); i++) {
                 var tmp = {"firstName": $scope.passengers[i].firstName, "lastName": $scope.passengers[i].lastName};
                 req.passengers.push(tmp);
             }
-            
+
             console.log(req);
-            
+
             $http({
                 method: "POST",
                 url: "api/wrapreservation/" + $scope.fid,
@@ -99,12 +101,23 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
                 console.log(response.data);
             });
         };
-        
+
         $scope.fn = dataContainer.getfn();
         $scope.fid = dataContainer.getfid();
         $scope.maxPassengers = dataContainer.getQty();
-        
+
         $scope.searchFunc = function () {
+
+            $scope.empList = [];
+            $scope.addemp = {};
+            $scope.saveEmp = function () {
+                $scope.empList.push($scope.addemp);
+                $scope.reset();
+            };
+            $scope.reset = function () {
+                $scope.addemp = {};
+                $scope.form.$setPristine();
+            };
 
             if ($scope.fromIATA === undefined) {
                 alert("Fill in a from airport");
@@ -118,9 +131,10 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
                 alert("Fill in passenger count");
                 return;
             }
+
             var passengers = ($scope.passengerCount).substring(0, 1);
             dataContainer.setQty(passengers);
-            
+
             if ($scope.toIATA === undefined) {
                 //console.log("To was not set, so just get from");
 

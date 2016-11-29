@@ -20,20 +20,20 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="fx CPH" aria-describedby="" ng-model="fromIATA">
+                                        <input type="text" class="form-control" placeholder="fx CPH" aria-describedby="" ng-model="addemp.fromIATA">
                                     </div>
                                 </div>
                                 <img width="15" src="images/icon_2.jpg" alt="">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="fx SXF" aria-describedby="" ng-model="toIATA">
+                                        <input type="text" class="form-control" placeholder="fx SXF" aria-describedby="" ng-model="addemp.toIATA">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="fx 2017-01-20" aria-describedby="" ng-model="onDate">
+                                        <input type="text" class="form-control" placeholder="fx 2017-01-20" aria-describedby="" ng-model="addemp.onDate">
                                     </div>
                                 </div>
                                 <!--
@@ -48,7 +48,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
                                         <div class="custom-select">
-                                             <select class="form-control" aria-describedby="" ng-model="passengerCount">
+                                             <select class="form-control" aria-describedby="" ng-model="addemp.passengerCount">
                                             <option>1 Passenger</option>
                                             <option>2 Passenger</option>
                                             <option>3 Passenger</option>
@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-danger" ng-click="searchFunc()">Søg</button>
+                                <button type="submit" class="btn btn-danger" ng-click="searchFunc()" ng-submit="saveEmp()">Søg</button>
                             </div>
                             <div class="form-bottom">
                                 <ul class="list-inline">
