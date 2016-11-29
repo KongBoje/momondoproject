@@ -8,6 +8,9 @@ package Entity;
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +26,7 @@ public class ReservationRequest implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Expose
     private String flightID;
@@ -36,9 +39,11 @@ public class ReservationRequest implements Serializable {
     @Expose
     private String reserveeEmail;
     @Expose
-    private ArrayList<Passenger> passengers = new ArrayList<Passenger>();
+    @ElementCollection
+    @CollectionTable(name="passengers")
+    private List<Passenger> passengers = new ArrayList<>();
 
-    public ReservationRequest(Long id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {
+    public ReservationRequest(Integer id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {
         this.id = id;
         this.flightID = flightID;
         this.numberOfSeats = numberOfSeats;
@@ -92,11 +97,11 @@ public class ReservationRequest implements Serializable {
         this.reserveeEmail = reserveeEmail;
     }
 
-    public ArrayList<Passenger> getPassengers() {
+    public List<Passenger> getPassengers() {
         return passengers;
     }
 
-    public void setPassengers(ArrayList<Passenger> passengers) {
+    public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
     }
 
@@ -105,11 +110,11 @@ public class ReservationRequest implements Serializable {
         this.numberOfSeats++;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -10,9 +10,27 @@ app.factory("dataContainer", function () {
     var factory = {};
 
     var myresults = null;
+    var flightnumber = null;
+    var passengerQty = null;
+    
+    factory.setQty = function(data) {
+        passengerQty = data;
+    }
+    
+    factory.getQty = function() {
+        return passengerQty;
+    }
 
     factory.set = function (data) {
         myresults = data;
+    }
+    
+    factory.setfn = function(data) {
+        flightnumber = data;
+    }
+    
+    factory.getfn = function() {
+        return flightnumber;
     }
 
     factory.get = function () {
@@ -41,9 +59,13 @@ app.config(function ($routeProvider) {
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
         $scope.results = dataContainer.get();
         
-        $scope.testmsg = function() {
-            console.log($scope.passengers);
+        $scope.gotoReserve = function(fn) {
+            dataContainer.setfn(fn);
+           // alert("something");
         }
+        
+        $scope.fn = dataContainer.getfn();
+        $scope.maxPassengers = dataContainer.getQty();
         
         $scope.searchFunc = function () {
 
@@ -60,6 +82,8 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
                 return;
             }
             var passengers = ($scope.passengerCount).substring(0, 1);
+            dataContainer.setQty(passengers);
+            
             if ($scope.toIATA === undefined) {
                 //console.log("To was not set, so just get from");
 

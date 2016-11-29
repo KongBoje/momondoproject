@@ -22,7 +22,7 @@ public ReservationResponse getReservation(Integer id);
 public boolean addReservation(ReservationResponse reservation);
 
 //Removes a reservation-object from the DB basted on its id.
-public boolean deleteReservation(Long id);    
+public boolean deleteReservation(Integer id);    
     
 //Creates List of reservation from all reservation instances.
 public List<ReservationRequest> getAllReservations();

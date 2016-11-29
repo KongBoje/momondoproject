@@ -10,29 +10,41 @@ and open the template in the editor.
 
 <!-- Angular cannot auto generate input fields so lets hardcode 5 -->
 <form>
-    <strong>Flight ID</strong>: (FlightID goes here<br>
-    <span>Amount of passengers</span><input type="number" ng-model="passengerCount" min="1" max="5">
+    <strong>Flight number</strong>: {{fn}}<br>
     <br>
-    <br>
-    <input type="text" ng-model="passengers[0].firstName">
-    <input type="text" ng-model="passengers[0].lastName">
     <br>
 
-    <input type="text" ng-model="passengers[1].firstName" ng-show="passengerCount >= 2">
-    <input type="text" ng-model="passengers[1].lastName" ng-show="passengerCount >= 2">
-    <br>
+    <!-- just for correctness-->
+    <div>First and last name of {{maxPassengers}} passenger(s).</div>
+    <div ng-show="maxPassengers >= 1">
+        <input type="text" ng-model="passengers[0].firstName">
+        <input type="text" ng-model="passengers[0].lastName">
+        <br>
+    </div>
 
-    <input type="text" ng-model="passengers[2].firstName" ng-show="passengerCount >= 3">
-    <input type="text" ng-model="passengers[2].lastName" ng-show="passengerCount >= 3">
-    <br>
+    <div ng-show="maxPassengers >= 2">
+        <input type="text" ng-model="passengers[1].firstName">
+        <input type="text" ng-model="passengers[1].lastName">
+        <hr>
+    </div>
 
-    <input type="text" ng-model="passengers[3].firstName" ng-show="passengerCount >= 4">
-    <input type="text" ng-model="passengers[3].lastName" ng-show="passengerCount >= 4">
-    <br>
+    <div ng-show="maxPassengers >= 3">
+        <input type="text" ng-model="passengers[2].firstName">
+        <input type="text" ng-model="passengers[2].lastName">
+        <hr>
+    </div>
 
-    <input type="text" ng-model="passengers[4].firstName" ng-show="passengerCount >= 5">
-    <input type="text" ng-model="passengers[4].lastName" ng-show="passengerCount >= 5">
-    <br>
+    <div ng-show="maxPassengers >= 4">
+        <input type="text" ng-model="passengers[3].firstName">
+        <input type="text" ng-model="passengers[3].lastName">
+        <hr>
+    </div>
+
+    <div ng-show="maxPassengers >= 5">
+        <input type="text" ng-model="passengers[4].firstName">
+        <input type="text" ng-model="passengers[4].lastName">
+        <hr>
+    </div>
 </form>
 
-<button ng-click="testmsg()">click me</button>
+<button ng-click="doReserve()">click me</button>
