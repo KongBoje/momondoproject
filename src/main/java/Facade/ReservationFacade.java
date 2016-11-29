@@ -52,7 +52,7 @@ public class ReservationFacade implements IReservationFacade {
     }
 
     @Override
-    public boolean deleteReservation(Long id) {
+    public boolean deleteReservation(Integer id) {
         try{
             
             em.getTransaction().begin();

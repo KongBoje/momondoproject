@@ -23,7 +23,7 @@ public class ReservationRequest implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Expose
     private String flightID;
@@ -38,7 +38,7 @@ public class ReservationRequest implements Serializable {
     @Expose
     private ArrayList<Passenger> passengers = new ArrayList<Passenger>();
 
-    public ReservationRequest(Long id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {
+    public ReservationRequest(Integer id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {
         this.id = id;
         this.flightID = flightID;
         this.numberOfSeats = numberOfSeats;
@@ -105,11 +105,11 @@ public class ReservationRequest implements Serializable {
         this.numberOfSeats++;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
