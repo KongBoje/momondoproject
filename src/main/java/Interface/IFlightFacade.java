@@ -11,26 +11,26 @@ import java.util.List;
 public interface IFlightFacade {
     
     //Fetches a flight based on the flightId
-    Flight getFlight(Integer id);
+    public Flight getFlight(Integer id);
     
     //Adds a flight to the DB, taking a flight object and converts it.
-    Flight addFlight(Flight flight);
+    public boolean addFlight(Flight flight);
     
     //Removes a flight-object from the DB based on its Id.
-    Boolean deleteFlight(Long id);
+    public Boolean deleteFlight(Integer id);
  
     //Creates a list with Flight-Objects from all Flights in DB.  
-    List<Flight> getAllFlights();
+    public List<Flight> getAllFlights();
     
     //Adds a flight instance, from an object to the DB.
-    FlightInstance addFlightInstance(FlightInstance flightInstance);
+    public FlightInstance addFlightInstance(FlightInstance flightInstance);
     
     //Adds an Airport to the DB, based on the object.
-    Airport addAirport(Airport airport);
+    public Airport addAirport(Airport airport);
     
     //Creates a list with Flight-Objects from all Flights in DB fitting the criteria
-    List<Flight> getFlightsFromDate(String origin, String date, int seats);
+    public List<Flight> getFlightsFromDate(String origin, String date, int seats);
     
-    List<Flight> getFlightsFromTo(String origin, String destination, String date, int seats);
+    public List<Flight> getFlightsFromTo(String origin, String destination, String date, int seats);
     
 }

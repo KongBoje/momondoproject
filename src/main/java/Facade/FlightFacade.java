@@ -35,20 +35,20 @@ public class FlightFacade implements IFlightFacade {
     }
 
     @Override
-    public Flight addFlight(Flight flight) {
-        Flight f = flight;
+    public boolean addFlight(Flight flight) {
+        //Flight f = flight;
             try {
                 em.getTransaction().begin();
-                em.persist(f);
+                em.persist(flight);
                 em.getTransaction().commit();
             } finally {
                 //em.close();
             }
-        return f;
+        return true;
     }
 
     @Override
-    public Boolean deleteFlight(Long id) {
+    public Boolean deleteFlight(Integer id) {
         Flight f = null;
         try {
             em.getTransaction().begin();
