@@ -9,13 +9,13 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * @author Joachim
+/ * @author Joachim
  */
 public class FacadeTest {
+    FlightFacade ff = new FlightFacade();
     public FacadeTest() {
         Persistence.generateSchema("mmp", null);
     }
-    FlightFacade ff = new FlightFacade();
 //    @Test
 //    public void flightCreation(){
 //        Flight testFlight = new Flight(2983248, 2354124, "butts", 34, 333, 203.33, 2143, "CPH", "MOW");
