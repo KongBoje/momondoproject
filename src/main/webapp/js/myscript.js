@@ -106,14 +106,27 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
         
         $scope.searchFunc = function () {
 
-            if ($scope.fromIATA === undefined) {
+            /*if ($scope.fromIATA === undefined) {
                 alert("Fill in a from airport");
                 return;
-            }
-            if ($scope.onDate === undefined) {
+            }*/
+            
+           
+
+            
+            if ($scope.startDate === undefined) {
                 alert("Fill in a date");
                 return;
             }
+            
+            
+            $scope.onDate = $scope.startDate;
+            var month = ($scope.onDate).substring(0,2);
+            var day = ($scope.onDate).substring(3,5);
+            var year = ($scope.onDate).substring(6,10);
+            
+            $scope.onDate = year + "-" + month + "-" + day;
+            
             if ($scope.passengerCount === undefined) {
                 alert("Fill in passenger count");
                 return;
@@ -152,3 +165,20 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
 
         };
     }]);
+
+
+
+app.directive('datepicker', function() {
+  return {
+    link: function(scope, el, attr) {
+      $(el).datepicker({
+        onSelect: function(dateText) {
+          console.log(dateText);
+          var expression = attr.ngModel + " = " + "'" + dateText + "'";
+          scope.$apply(expression);
+          console.log(scope.startDate);
+        }
+      });
+    }
+  };
+});
