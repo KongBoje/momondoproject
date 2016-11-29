@@ -48,6 +48,10 @@ public class ReservationRequest implements Serializable {
         this.numberOfSeats = 0;
     }
 
+    public ReservationRequest() {
+    }
+    
+
     public String getFlightID() {
         return flightID;
     }

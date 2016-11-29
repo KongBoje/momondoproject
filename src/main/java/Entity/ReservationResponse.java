@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -42,7 +43,7 @@ public class ReservationResponse implements Serializable {
     @Expose
     private String reserveeName;
     @Expose
-    @OneToMany
+    @ManyToOne
     private ArrayList<Passenger> passengers = new ArrayList<Passenger>();
 
     public ReservationResponse(String flightNumber, String origin, String destination, String date, int flightTime, int numberOfSeats, String reserveeName) {
@@ -54,6 +55,10 @@ public class ReservationResponse implements Serializable {
         this.numberOfSeats = numberOfSeats;
         this.reserveeName = reserveeName;
     }
+
+    public ReservationResponse() {
+    }
+    
 
     public String getFlightNumber() {
         return flightNumber;

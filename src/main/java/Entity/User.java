@@ -60,7 +60,6 @@ public class User implements Serializable {
         this.email = email;
     }
     
-    
     public Integer getId() {
         return id;
     }
