@@ -10,35 +10,44 @@ app.factory("dataContainer", function () {
     var factory = {};
 
     var myresults = null;
-    var flightnumber = null;
+    var flightnum = null;
+    var flightid = null;
     var passengerQty = null;
     
     factory.setQty = function(data) {
         passengerQty = data;
-    }
+    };
     
     factory.getQty = function() {
         return passengerQty;
-    }
+    };
 
     factory.set = function (data) {
         myresults = data;
-    }
+    };
     
     factory.setfn = function(data) {
-        flightnumber = data;
-    }
+        flightnum = data;
+    };
     
     factory.getfn = function() {
-        return flightnumber;
-    }
+        return flightnum;
+    };
+    
+    factory.getfid = function() {
+        return flightid;
+    };
+    
+    factory.setfid = function(data) {
+        flightid = data;
+    };
 
     factory.get = function () {
         return myresults;
-    }
+    };
 
     return factory;
-})
+});
 
 app.config(function ($routeProvider) {
     $routeProvider.
@@ -59,12 +68,40 @@ app.config(function ($routeProvider) {
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
         $scope.results = dataContainer.get();
         
-        $scope.gotoReserve = function(fn) {
+        $scope.gotoReserve = function(fid, fn) {
+            dataContainer.setfid(fid);
             dataContainer.setfn(fn);
            // alert("something");
-        }
+        };
+        
+        $scope.doReserve = function() {
+            var req = {
+                flightID: dataContainer.getfid(),
+                numberOfSeats: parseInt(dataContainer.getQty()),
+                reserveeName: "The president",
+                reservePhone: "12345678",
+                reserveeEmail: "president@whitehouse.gov",
+                passengers: []
+            };
+            
+            for(var i = 0; i != dataContainer.getQty(); i++) {
+                var tmp = {"firstName": $scope.passengers[i].firstName, "lastName": $scope.passengers[i].lastName};
+                req.passengers.push(tmp);
+            }
+            
+            console.log(req);
+            
+            $http({
+                method: "POST",
+                url: "api/wrapreservation/" + $scope.fid,
+                data: req
+            }).then(function success(response) {
+                console.log(response.data);
+            });
+        };
         
         $scope.fn = dataContainer.getfn();
+        $scope.fid = dataContainer.getfid();
         $scope.maxPassengers = dataContainer.getQty();
         
         $scope.searchFunc = function () {

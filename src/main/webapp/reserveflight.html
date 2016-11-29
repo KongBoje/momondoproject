@@ -10,6 +10,7 @@ and open the template in the editor.
 
 <!-- Angular cannot auto generate input fields so lets hardcode 5 -->
 <form>
+    <strong>Flight ID</strong>: {{fid}}<br>
     <strong>Flight number</strong>: {{fn}}<br>
     <br>
     <br>
@@ -19,7 +20,7 @@ and open the template in the editor.
     <div ng-show="maxPassengers >= 1">
         <input type="text" ng-model="passengers[0].firstName">
         <input type="text" ng-model="passengers[0].lastName">
-        <br>
+        <hr>
     </div>
 
     <div ng-show="maxPassengers >= 2">
