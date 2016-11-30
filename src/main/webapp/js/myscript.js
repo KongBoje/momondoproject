@@ -67,6 +67,17 @@ app.config(function ($routeProvider) {
 
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
         $scope.results = dataContainer.get();
+        
+        function getUndefined() {
+            return;
+        }
+        
+        clearFields = function() {
+            $scope.fromIATA = getUndefined();
+            $scope.toIATA = getUndefined();
+            $scope.startDate = getUndefined();
+            $scope.passengerCount = getUndefined();
+        };
 
         $scope.gotoReserve = function (fid, fn) {
             dataContainer.setfid(fid);
@@ -111,14 +122,13 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
 
             if ($scope.fromIATA === undefined) {
                 alert("Fill in a from airport");
+                clearFields();
                 return;
             }
             
-           
-
-            
             if ($scope.startDate === undefined) {
                 alert("Fill in a date");
+                clearFields();
                 return;
             }
             
@@ -132,6 +142,7 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
             
             if ($scope.passengerCount === undefined) {
                 alert("Fill in passenger count");
+                clearFields();
                 return;
             }
 
@@ -185,4 +196,19 @@ app.directive('datepicker', function() {
       });
     }
   };
+});
+
+
+
+app.filter("niceIATA", function() {
+    return function(x) {
+        var tmp = x.toLowerCase();
+        // js has no hshmap ..
+        if(tmp == "cph") return "København";
+        if(tmp == "sxf") return "Berlin";
+        if(tmp == "stn") return "London";
+        if(tmp == "cdg") return "Paris";
+        if(tmp == "bcn") return "Barcelona";
+        return x;
+    };
 });

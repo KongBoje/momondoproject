@@ -36,6 +36,7 @@ public class AllFlightsResource {
 
     private static final Gson gson = new Gson();
     private static final DownloadProxy dp = new DownloadProxy();
+    private static final String OURDATA = "http://localhost:8084/Momondoproject/";
 
     @Context
     private UriInfo context;
@@ -71,7 +72,7 @@ public class AllFlightsResource {
         }
 
         try {
-            kaffeAirline = dp.GetHttpRequest("http://46.101.174.179/momondodata/api/flights/" + from + "/" + date + "/" + tickets);
+            kaffeAirline = dp.GetHttpRequest(OURDATA + "api/flights/" + from + "/" + date + "/" + tickets);
             EntityV2.Airline a2 = gson.fromJson(kaffeAirline, EntityV2.Airline.class);
             airlines.add(a2);
 
@@ -89,7 +90,7 @@ public class AllFlightsResource {
         ArrayList<EntityV2.Airline> airlines = new ArrayList<>();
         String larsAirline;
         String kaffeAirline;
-        
+
         try {
             larsAirline = dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
             EntityV2.Airline a1 = gson.fromJson(larsAirline, EntityV2.Airline.class);
@@ -99,14 +100,14 @@ public class AllFlightsResource {
         }
 
         try {
-            kaffeAirline = dp.GetHttpRequest("http://46.101.174.179/momondodata/api/flights/" + from + "/" + to + "/" + date + "/" + tickets);
+            kaffeAirline = dp.GetHttpRequest(OURDATA + "api/flights/" + from + "/" + to + "/" + date + "/" + tickets);
             EntityV2.Airline a2 = gson.fromJson(kaffeAirline, EntityV2.Airline.class);
             airlines.add(a2);
 
         } catch (FlightException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
-        
+
         return gson.toJson(airlines);
         //return dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
     }

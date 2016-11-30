@@ -33,11 +33,11 @@ public class FlightsResource {
 
     ArrayList<Flight> flightList = new ArrayList<Flight>() {
         {
-            add(new Flight("5342-5374581236347", "KAF6666", "2016-11-22T00:00:00.000Z", 6, 67, 240, "CPH", "SXF"));
-            add(new Flight("4443-8765989054363", "KAF3466", "2016-12-03T00:00:00.000Z", 9, 239, 120, "CPH", "STN"));
-            add(new Flight("2323-8675048485030", "KAF6622", "2016-03-12T00:00:00.000Z", 4, 190, 60, "STN", "SXF"));
-            add(new Flight("8765-0101909245668", "KAF5789", "2017-01-05T00:00:00.000Z", 12, 300, 264, "STN", "CPH"));
-            add(new Flight("6464-0192837465951", "KAF1113", "2017-02-01T00:00:00.000Z", 14, 200, 210, "SXF", "CPH"));
+            add(new Flight("5342-5374581236347", "KAF6666", "2016-11-22T00:00:00.000Z", 6, 67, 240, "cph", "sxf"));
+            add(new Flight("4443-8765989054363", "KAF3466", "2016-12-03T00:00:00.000Z", 9, 239, 120, "cph", "stn"));
+            add(new Flight("2323-8675048485030", "KAF6622", "2016-03-12T00:00:00.000Z", 4, 190, 60, "stn", "sxf"));
+            add(new Flight("8765-0101909245668", "KAF5789", "2017-01-05T00:00:00.000Z", 12, 300, 264, "stn", "cph"));
+            add(new Flight("6464-0192837465951", "KAF1113", "2017-02-01T00:00:00.000Z", 14, 200, 210, "sxf", "cph"));
         }
     };
     
@@ -79,7 +79,7 @@ public class FlightsResource {
                 
         Airline airline = new Airline("Kaffemænd Tours");
         for (Flight x : flightList) {
-            if (x.getDate().equals(date) && x.getOrigin().equals(from)) {
+            if (x.getDate().toLowerCase().equals(date.toLowerCase()) && x.getOrigin().toLowerCase().equals(from.toLowerCase())) {
                 
                 airline.addFlight(x);
             }
@@ -114,7 +114,7 @@ public class FlightsResource {
         
         Airline airline = new Airline("Kaffemænd Tours");
         for (Flight x : flightList) {
-            if (x.getDate().equals(date) && x.getOrigin().equals(from) && x.getDestination().equals(to)) {
+            if (x.getDate().toLowerCase().equals(date.toLowerCase()) && x.getOrigin().toLowerCase().equals(from.toLowerCase()) && x.getDestination().toLowerCase().equals(to.toLowerCase())) {
                 airline.addFlight(x);
             }
         }
