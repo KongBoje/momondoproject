@@ -10,8 +10,8 @@
                     <thead>
                         <tr>
                             <th>flightNumber</th>
-                            <th>date</th>
-                            <th>numberOfSeats</th>
+                            <th>date (yyyy-dd-MM)</th>
+                            <!--<th>numberOfSeats</th>-->
                             <th>totalPrice</th>
                             <th>traveltime</th>
                             <th>origin</th>
@@ -22,12 +22,12 @@
                     <tbody>
                         <tr ng-repeat="f in x.flights">
                             <td>{{f.flightNumber}}</td>
-                            <td>{{f.date}}</td>
-                            <td>{{f.numberOfSeats}}</td>
-                            <td>{{f.totalPrice}}</td>
-                            <td>{{f.traveltime}}</td>
-                            <td>{{f.origin}}</td>
-                            <td>{{f.destination}}</td>
+                            <td>{{f.date | date: 'yyyy-dd-MM HH:mm'}}</td>
+                            <!--<td>{{f.numberOfSeats}}</td>-->
+                            <td>{{f.totalPrice}} €</td>
+                            <td>{{f.traveltime / 60}} hours</td>
+                            <td>{{f.origin | niceIATA}}</td>
+                            <td>{{f.destination | niceIATA}}</td>
                             <td><a ng-href="#reserve" ng-click="gotoReserve(f.flightID, f.flightNumber)">Reservation</a></td>
                         </tr>
                     </tbody>

@@ -197,3 +197,18 @@ app.directive('datepicker', function() {
     }
   };
 });
+
+
+
+app.filter("niceIATA", function() {
+    return function(x) {
+        var tmp = x.toLowerCase();
+        // js has no hshmap ..
+        if(tmp == "cph") return "København";
+        if(tmp == "sxf") return "Berlin";
+        if(tmp == "stn") return "London";
+        if(tmp == "cdg") return "Paris";
+        if(tmp == "bcn") return "Barcelona";
+        return x;
+    };
+});
