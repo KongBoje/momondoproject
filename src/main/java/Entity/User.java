@@ -6,16 +6,27 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Martin
  */
 @Entity
+@NamedQueries ({
+    @NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+    @NamedQuery(name="User.findById", query="SELECT u FROM User u WHERE u.id = :id")
+})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,8 +37,13 @@ public class User implements Serializable {
     //private String password;    
     private String phone;
     private String email;
-
-    public User() {
+    @OneToMany
+    @ElementCollection
+    @CollectionTable(name="mySeats")
+    private List<ReservationResponse> mySeats = new ArrayList<>();
+    
+    public User () {
+        
     }
 
     public User(String name, String phone, String email) {
@@ -58,6 +74,14 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public void addReservation(ReservationResponse r){
+        mySeats.add(r);
+    }
+    
+    public List<ReservationResponse> getReservations() {
+        return this.mySeats;
     }
     
     public Integer getId() {

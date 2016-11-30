@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Entity.ReservationResponse;
 import Entity.User;
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface IUserFacade {
     public boolean deleteUser(Integer id);
     
     public List<User> getAllUsers();
+    
+    public void addResponseToUser(User u, ReservationResponse r);
 }

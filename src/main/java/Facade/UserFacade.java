@@ -5,7 +5,7 @@
  */
 package Facade;
 
-import Entity.Flight;
+import Entity.ReservationResponse;
 import Entity.User;
 import Interface.IUserFacade;
 import java.util.List;
@@ -20,61 +20,68 @@ import javax.persistence.Persistence;
 public class UserFacade implements IUserFacade {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("mmp");
-    private static EntityManager em = emf.createEntityManager();
-    
+    // private static EntityManager em = emf.createEntityManager();
+
     @Override
     public User getUser(Integer id) {
-    
+        EntityManager em = emf.createEntityManager();
         User u = null;
         try {
-            u = em.find(User.class, id);            
+            u = em.createNamedQuery("User.findById", User.class).setParameter("id", id).getSingleResult();
         } finally {
             em.close();
         }
         return u;
-        
+
     }
 
     @Override
     public boolean addUser(User u) {
-        
-            try {
-                em.getTransaction().begin();
-                em.persist(u);
-                em.getTransaction().commit();
-            } catch(Exception e){
-                    return false;
-                    }
-            
-            finally {
-                em.close();
-                
-            }
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(u);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            return false;
+        } finally {
+            em.close();
+        }
         return true;
     }
 
     @Override
     public boolean deleteUser(Integer id) {
-        
-        User u = null;
+        EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            u = em.find(User.class, id);
-            em.remove(u);
+            em.remove(em.find(User.class, id));
             em.getTransaction().commit();
+            return true;
+        } catch (Exception ex) {
+            return false;
         } finally {
             em.close();
         }
-        return true;
-        
+
     }
 
     @Override
     public List<User> getAllUsers() {
-        List<User> result = em.createQuery("SELECT e FROM User e").getResultList();
+        EntityManager em = emf.createEntityManager();
+        List<User> result = em.createNamedQuery("User.findAll", User.class).getResultList();
 
         em.close();
         return result;
     }
-    
+
+    @Override
+    public void addResponseToUser(User u, ReservationResponse r) {
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        u.addReservation(r);
+        em.getTransaction().commit();
+        em.close();
+    }
 }
