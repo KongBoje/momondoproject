@@ -20,6 +20,7 @@ public interface IUserFacade {
     public boolean addUser(User u);
     
     public boolean deleteUser(Integer id);
+    // TODO: Fix for foreign key relatoins
     
     public List<User> getAllUsers();
     
