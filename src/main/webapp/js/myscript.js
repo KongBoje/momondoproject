@@ -67,6 +67,17 @@ app.config(function ($routeProvider) {
 
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
         $scope.results = dataContainer.get();
+        
+        function getUndefined() {
+            return;
+        }
+        
+        clearFields = function() {
+            $scope.fromIATA = getUndefined();
+            $scope.toIATA = getUndefined();
+            $scope.startDate = getUndefined();
+            $scope.passengerCount = getUndefined();
+        };
 
         $scope.gotoReserve = function (fid, fn) {
             dataContainer.setfid(fid);
@@ -111,14 +122,13 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
 
             if ($scope.fromIATA === undefined) {
                 alert("Fill in a from airport");
+                clearFields();
                 return;
             }
             
-           
-
-            
             if ($scope.startDate === undefined) {
                 alert("Fill in a date");
+                clearFields();
                 return;
             }
             
@@ -132,6 +142,7 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
             
             if ($scope.passengerCount === undefined) {
                 alert("Fill in passenger count");
+                clearFields();
                 return;
             }
 
