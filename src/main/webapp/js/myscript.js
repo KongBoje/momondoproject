@@ -163,9 +163,9 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
             var req = {
                 flightID: dataContainer.getfid(),
                 numberOfSeats: parseInt(dataContainer.getQty()),
-                reserveeName: "The president",
-                reservePhone: "12345678",
-                reserveeEmail: "president@whitehouse.gov",
+                reserveeName: loginContainer.getRealname(),
+                reservePhone: loginContainer.getPhone(),
+                reserveeEmail: loginContainer.getEmail(),
                 passengers: []
             };
 
