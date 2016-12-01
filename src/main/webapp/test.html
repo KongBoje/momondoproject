@@ -14,7 +14,7 @@ and open the template in the editor.
             var app = angular.module("myApp", []);
             
             app.controller("myCtrl", ["$scope", "$http", function ($scope, $http) {
-                    var req = {"username": "bobmarly2", "password": "sfhasfd"};
+                    var req = {username: "bobmarly2", password: "sfhasfd"};
                     $scope.resultType = 0;
 
                     $http({
@@ -48,6 +48,8 @@ and open the template in the editor.
         </script>
     </head>
     <body>
+        
+        
         resultType {{resultType}}
         <div ng-show="resultType == 0">
             No response yet.

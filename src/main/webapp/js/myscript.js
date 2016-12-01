@@ -6,6 +6,67 @@
 
 var app = angular.module("myApp", ["ngRoute"]);
 
+app.factory("loginContainer", function() {
+   var factory = {};
+   
+   var resultType = 0;
+   var username = null;
+   var id = null;
+   var email = null;
+   var realname = null;
+   var phone = null;
+   
+   factory.setResultType = function(data) {
+       resultType = data;
+   };
+   
+   factory.setUsername = function(data) {
+       username = data;
+   };
+   
+   factory.setId = function(data) {
+       id = data;
+   };
+   
+   factory.setEmail = function(data) {
+       email = data;
+   },
+   
+   factory.setRealname = function(data) {
+       realname = data;
+   };
+   
+   factory.setPhone = function(data) {
+       phone = data;
+   };
+   
+   factory.getResultType = function() {
+       return resultType;
+   };
+   
+   factory.getUsername = function() {
+       return username;
+   };
+   
+   factory.getId = function() {
+       return id;
+   };
+   
+   factory.getEmail = function() {
+       return email;
+   };
+   
+   factory.getRealname = function() {
+       return realname;
+   };
+   
+   factory.getPhone = function() {
+       return phone;
+   };
+   
+   return factory;
+});
+
 app.factory("dataContainer", function () {
     var factory = {};
 
@@ -60,12 +121,15 @@ app.config(function ($routeProvider) {
     }).when("/reserve", {
         templateUrl: "reserveflight.html",
         controller: "searchCtrl"
+    }).when("/login", {
+        templateUrl: "login.html",
+        controller: "loginCtrl"
     }).otherwise({
         redirectTo: "/search"
     });
 });
 
-app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
+app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContainer", "$location", function ($scope, $http, dataContainer, loginContainer, $location) {
         $scope.results = dataContainer.get();
         
         function getUndefined() {
@@ -181,7 +245,43 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
         };
     }]);
 
-
+app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function($scope, $http, loginContainer) {
+    $scope.resultType = loginContainer.getResultType();
+    
+     $scope.loginButtonFunc = function() {
+      
+     var req = {username: $scope.loginFieldUsername, password: $scope.loginFieldPassword};
+        
+        $http({
+            method: "POST",
+            url: "api/login",
+            data: req
+        }).success(function (data) {
+            console.log("It worked!");
+            
+            loginContainer.setUsername(req.username);
+            loginContainer.setId(data.id);
+            loginContainer.setEmail(data.email);
+            loginContainer.setRealname(data.realname);
+            loginContainer.setPhone(data.phone);
+            
+            console.log(data);
+            console.log(loginContainer.getId());
+            console.log(loginContainer);
+            
+            $scope.resultMsg = "Success: You logged in as " + loginContainer.getUsername() + " (" + loginContainer.getRealname() + ")";
+        }).error(function(error, status) {
+            if(status == 500) {
+                console.log("User " + req.username + " doesn't exist");
+                $scope.resultMsg = "The user doesnt exist";
+            };
+            if(status == 400) {
+                console.log("User" + req.username + " isnt " + req.password);
+                $scope.resultMsg = "The password is wrong";
+            };
+        });
+    };
+}]);
 
 app.directive('datepicker', function() {
   return {
