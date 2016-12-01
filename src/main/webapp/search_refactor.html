@@ -1,4 +1,24 @@
 <div class="search-section text-center">
+    <style>
+        #FromAir {
+            width: 190px;
+        }
+        #FromAir option {
+            width: 190px;
+        }
+        #ToAir {
+            width: 190px;
+        }
+        #ToAir option {
+            width: 190px;
+        }
+        #Pass {
+            width: 190px;
+        }
+        #Pass option {
+            width: 190px;
+        }
+    </style>
     <form class="form-inline">
         <div class="container">
             <h1><img src="images/plane.png" alt=""><span>Sammenlign <strong>billige flybilletter og hoteller <!--{{startDate}}--></strong></span></h1>
@@ -22,7 +42,7 @@
                                     <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
                                     <!--<input type="text" class="form-control" placeholder="fx CPH" aria-describedby="" ng-model="fromIATA">-->
                                     <div class="custom-select">
-                                        <select class="form-control" aria-describedby="" ng-model="fromIATA">
+                                        <select id="FromAir" class="form-control" aria-describedby="" ng-model="fromIATA">
                                             <option value="" hidden="">From</option>
                                             <option>CPH</option>
                                             <option>STN</option>
@@ -39,7 +59,7 @@
                                     <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
                                     <!--<input type="text" class="form-control" placeholder="fx SXF" aria-describedby="" ng-model="toIATA">-->
                                     <div class="custom-select">
-                                        <select class="form-control" aria-describedby="" ng-model="toIATA">
+                                        <select id="ToAir" class="form-control" aria-describedby="" ng-model="toIATA">
                                             <option value="" hidden="">To</option>
                                             <option>CPH</option>
                                             <option>STN</option>
@@ -53,7 +73,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
-                                    <input type="text" class="form-control" datepicker="" ng-model="startDate" aria-describedby=""/>
+                                    <input type="text" class="form-control" placeholder="Date" datepicker="" ng-model="startDate" aria-describedby=""/>
                                     <!--<input type="text" class="form-control" placeholder="fx 2017-01-20" aria-describedby="" ng-model="onDate">-->
                                 </div>
                             </div>
@@ -69,7 +89,8 @@
                                 <div class="input-group">
                                     <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
                                     <div class="custom-select">
-                                        <select class="form-control" aria-describedby="" ng-model="passengerCount">
+                                        <select id="Pass" class="form-control" aria-describedby="" ng-model="passengerCount">
+                                            <option value="" hidden="">Passengers</option>
                                             <option>1 Passenger</option>
                                             <option>2 Passenger</option>
                                             <option>3 Passenger</option>
