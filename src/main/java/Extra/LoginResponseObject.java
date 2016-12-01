@@ -13,18 +13,40 @@ import Entity.User;
  */
 public class LoginResponseObject {
     private final int id;
-    private final String userName;
-    private final String password;
-    private final String realName;
+    private final String username;
+    // private final String password;
+    private final String realname;
     private final String email;
     private final String phone;
     
     public LoginResponseObject(User u) {
         this.id = u.getId();
-        this.userName = u.getUserName();
-        this.password = u.getPassword();
-        this.realName = u.getRealName();
+        this.username = u.getUserName();
+        //this.password = u.getPassword();
+        this.realname = u.getRealName();
         this.email = u.getEmail();
         this.phone = u.getPhone();
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+    
+    
 }

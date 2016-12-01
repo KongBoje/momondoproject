@@ -6,6 +6,7 @@
 package Rest;
 
 import Entity.User;
+import Exceptions.FlightException;
 import Extra.LoginObject;
 import Extra.LoginResponseObject;
 import Facade.UserFacade;
@@ -36,7 +37,7 @@ public class LoginResource {
 
     public LoginResource() {
     }
-    
+
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String visit() {
@@ -45,20 +46,18 @@ public class LoginResource {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson(String json) {
-        try {
-            LoginObject LO = GSON.fromJson(json, LoginObject.class);
+    public String getJson(String json) throws FlightException {
+        LoginObject LO = GSON.fromJson(json, LoginObject.class);
 
-            User tmp = UF.getUserByCredentials(LO.getUsername(), LO.getPassword());
+        User tmp = UF.getUserByCredentials(LO.getUsername(), LO.getPassword());
+
+        if (tmp.getPassword().equals(LO.getPassword())) {
 
             LoginResponseObject lro = new LoginResponseObject(tmp);
 
             return GSON.toJson(lro);
-        } catch (Exception ex) {
-            User tmpFail = new User("failure", "a", "b", "c", "d");
-            LoginResponseObject failure = new LoginResponseObject(tmpFail);
-            
-            return GSON.toJson(failure);
         }
+        
+        throw new FlightException(400, 3, "Password is wrong");
     }
 }
