@@ -9,9 +9,11 @@ and open the template in the editor.
 <h2>This is the flight reservation page</h2>
 
 <!-- Angular cannot auto generate input fields so lets hardcode 5 -->
+<div ng-show="isLoggedIn()">
 <form>
     <strong>Flight ID</strong>: {{fid}}<br>
     <strong>Flight number</strong>: {{fn}}<br>
+    <strong>Your name</strong>: {{USERREALNAME}}
     <br>
     <br>
 
@@ -49,3 +51,4 @@ and open the template in the editor.
 </form>
 
 <button ng-click="doReserve()">click me</button>
+</div>

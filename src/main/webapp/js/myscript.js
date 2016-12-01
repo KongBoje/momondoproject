@@ -132,6 +132,14 @@ app.config(function ($routeProvider) {
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContainer", "$location", function ($scope, $http, dataContainer, loginContainer, $location) {
         $scope.results = dataContainer.get();
         
+        $scope.isLoggedIn = function() {
+            if(loginContainer.getId() == null) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
         function getUndefined() {
             return;
         }
@@ -180,7 +188,9 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
         $scope.fn = dataContainer.getfn();
         $scope.fid = dataContainer.getfid();
         $scope.maxPassengers = dataContainer.getQty();
-
+        
+        $scope.USERREALNAME = loginContainer.getRealname();
+        
         $scope.searchFunc = function () {
 
 
