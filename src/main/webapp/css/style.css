@@ -212,16 +212,16 @@ th {
     a:visited {
         text-decoration: underline
     }
-    a[href]:after {
+/*    a[href]:after {
         content: " (" attr(href) ")"
-    }
+    }*/
     abbr[title]:after {
         content: " (" attr(title) ")"
     }
-    a[href^="#"]:after,
+/*    a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: ""
-    }
+    }*/
     blockquote,
     pre {
         border: 1px solid #999
@@ -269,7 +269,7 @@ th {
 .btn-danger:active,
 .btn-default.active,
 .btn-default:active,
-.btn-info.active,
+.btn-info.active,   
 .btn-info:active,
 .btn-success.active,
 .btn-success:active,
@@ -6814,7 +6814,7 @@ header {
     -moz-appearance: none;
     appearance: none
 }
-.search-section .tab-sections .form-sec .custom-select:after {
+/*.search-section .tab-sections .form-sec .custom-select:after {
     content: "";
     background: url(../images/down-arrow-black.png) center no-repeat;
     background-size: contain;
@@ -6826,7 +6826,7 @@ header {
     top: 5px;
     z-index: 3;
     vertical-align: middle
-}
+}*/
 .search-section .tab-sections .direct {
     padding: 0 5px;
     display: inline-block
@@ -6852,7 +6852,7 @@ header {
 .search-section .tab-sections ul li .custom-select {
     display: inline-block
 }
-.search-section .tab-sections ul li .custom-select:after {
+/*.search-section .tab-sections ul li .custom-select:after {
     content: "";
     background: url(../images/down-arrow.png) center no-repeat;
     background-size: contain;
@@ -6860,7 +6860,7 @@ header {
     height: 10px;
     display: inline-block;
     vertical-align: middle
-}
+}*/
 .search-section .tab-sections ul li select {
     color: #fff;
     background: 0 0;
