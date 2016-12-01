@@ -36,7 +36,7 @@ public class User implements Serializable {
     private Integer id;
     private String realName;
     private String userName;
-    private String password;    
+    private String password;
     private String phone;
     private String email;
     @OneToMany

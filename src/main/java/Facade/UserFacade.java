@@ -48,7 +48,7 @@ public class UserFacade implements IUserFacade {
         }
         return u;
     }
-    
+
     @Override
     public boolean addUser(User u) {
         EntityManager em = emf.createEntityManager();
@@ -92,7 +92,7 @@ public class UserFacade implements IUserFacade {
     @Override
     public void addResponseToUser(User u, ReservationResponse r) {
         EntityManager em = emf.createEntityManager();
-        
+
         em.getTransaction().begin();
         u.addReservation(r);
         em.getTransaction().commit();

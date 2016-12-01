@@ -2,7 +2,6 @@ package Interface;
 
 import Entity.Airport;
 import Entity.Flight;
-import Entity.FlightInstance;
 import java.util.List;
 
 /**
@@ -23,7 +22,7 @@ public interface IFlightFacade {
     public List<Flight> getAllFlights();
     
     //Adds a flight instance, from an object to the DB.
-    public FlightInstance addFlightInstance(FlightInstance flightInstance);
+    //public FlightInstance addFlightInstance(FlightInstance flightInstance);
     
     //Adds an Airport to the DB, based on the object.
     public Airport addAirport(Airport airport);
