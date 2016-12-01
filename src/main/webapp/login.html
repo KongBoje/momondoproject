@@ -5,8 +5,9 @@
         <td>Password</td>
     </tr>
     <tr>
-        <td><input type="text"></td>
-        <td><input type="text"></td>
+        <td><input type="text" ng-model="loginFieldUsername"></td>
+        <td><input type="text" ng-model="loginFieldPassword"></td>
     </tr>
 </table>
-<button>Login</button>
+<button ng-click="loginButtonFunc()">Login</button>
+<div>The result type is: {{resultType}}</div>

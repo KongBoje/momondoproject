@@ -246,7 +246,27 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
     }]);
 
 app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function($scope, $http, loginContainer) {
-        alert("loginCtrl");
+    $scope.resultType = loginContainer.getResultType();
+    
+     $scope.loginButtonFunc = function() {
+      
+     var req = {username: $scope.loginFieldUsername, password: $scope.loginFieldPassword};
+        
+        $http({
+            method: "POST",
+            url: "api/login",
+            data: req
+        }).success(function (data) {
+            console.log("It worked!");
+        }).error(function(error, status) {
+            if(status == 500) {
+                console.log("User " + req.username + " doesn't exist");
+            };
+            if(status == 400) {
+                console.log("User" + req.username + " isnt " + req.password);
+            };
+        });
+    };
 }]);
 
 app.directive('datepicker', function() {
