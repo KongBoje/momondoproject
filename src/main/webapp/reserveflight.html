@@ -52,3 +52,20 @@ and open the template in the editor.
 
 <button ng-click="doReserve()">click me</button>
 </div>
+<br><br>
+<div ng-show="gotResponse">
+    <div>Response received!</div>
+    <br>
+    <div>{{responseDate}}</div>
+    <div>{{responseDestination}}</div>
+    <div>{{responseFlightNumber}}</div>
+    <div>{{responseFlightTime}}</div>
+    <div>{{responseNumberOfSeats}}</div>
+    <div>{{responseOrigin}}</div>
+    <hr>
+    <div ng-repeat="x in responsePassengers">
+        <div>{{x.firstName}} {{x.lastName}}</div>
+    </div>
+    <hr>
+    <div>{{responseReserveeName}}</div>
+</div>

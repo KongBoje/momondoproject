@@ -23,7 +23,7 @@ public class UserTests {
 
     @Test
     public void testGetUserTest() {
-        User u = new User("Anders And", "bobmarly2", "sfhasfd", "777", "and@bbb.ccc");
+        User u = new User("Anders And", "productowner", "business", "11122233", "productowner@productowners.com");
         UF.addUser(u);
 
         assertTrue(UF.getUser(u.getId()).getRealName().equals("Anders And"));
@@ -59,7 +59,7 @@ public class UserTests {
 
     @Test
     public void testAddReservation() {
-        User u = new User("Hans", "john hitler", "hsififsi", "456", "hc@andersen.dk");
+        User u = new User("Hans", "oplader123", "password", "45612300", "hc@andersen.dk");
         UF.addUser(u);
 
         assertTrue(u.getReservations().isEmpty());

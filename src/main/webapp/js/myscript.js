@@ -131,6 +131,7 @@ app.config(function ($routeProvider) {
 
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContainer", "$location", function ($scope, $http, dataContainer, loginContainer, $location) {
         $scope.results = dataContainer.get();
+        $scope.GOTRESPONSE = false;
         
         $scope.isLoggedIn = function() {
             if(loginContainer.getId() == null) {
@@ -174,14 +175,24 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 req.passengers.push(tmp);
             }
 
-            console.log(req);
+            //console.log(req);
 
             $http({
                 method: "POST",
                 url: "api/wrapreservation/" + $scope.fid,
                 data: req
             }).then(function success(response) {
-                console.log(response.data);
+                $scope.GOTRESPONSE = true;
+                
+                $scope.responseDate = response.data.date;
+                $scope.responseDestination = response.data.destination;
+                $scope.responseFlightNumber = response.data.flightNumber;
+                $scope.responseFlightTime = response.data.flightTime;
+                $scope.responseNumberOfSeats = response.data.numberOfSeats;
+                $scope.responseOrigin = response.data.origin;
+                $scope.responsePassengers = response.data.passengers;
+                $scope.responseReserveeName = response.data.reserveeName;
+                //console.log(response.data);
             });
         };
 
