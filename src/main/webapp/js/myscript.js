@@ -258,12 +258,26 @@ app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function($scop
             data: req
         }).success(function (data) {
             console.log("It worked!");
+            
+            loginContainer.setUsername(req.username);
+            loginContainer.setId(data.id);
+            loginContainer.setEmail(data.email);
+            loginContainer.setRealname(data.realname);
+            loginContainer.setPhone(data.phone);
+            
+            console.log(data);
+            console.log(loginContainer.getId());
+            console.log(loginContainer);
+            
+            $scope.resultMsg = "Success: You logged in as " + loginContainer.getUsername() + " (" + loginContainer.getRealname() + ")";
         }).error(function(error, status) {
             if(status == 500) {
                 console.log("User " + req.username + " doesn't exist");
+                $scope.resultMsg = "The user doesnt exist";
             };
             if(status == 400) {
                 console.log("User" + req.username + " isnt " + req.password);
+                $scope.resultMsg = "The password is wrong";
             };
         });
     };
