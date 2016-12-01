@@ -41,13 +41,12 @@ public class UserFacade implements IUserFacade {
         EntityManager em = emf.createEntityManager();
         User u = null;
         try {
-            Query query = em.createQuery("SELECT e FROM User e WHERE e.userName = :userName AND e.password = :password").setParameter("name", userName).setParameter("password", password);
-            u = (User) query.getSingleResult();
+            u = em.createNamedQuery("User.findByUserName", User.class).setParameter("userName", userName).getSingleResult();
+            //Query query = em.createQuery("SELECT e FROM User e WHERE e.userName = :userName AND e.password = :password").setParameter("name", userName).setParameter("password", password);
         } finally {
             em.close();
         }
         return u;
-
     }
     
     @Override
