@@ -33,8 +33,9 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    //private String password;    
+    private String realName;
+    private String userName;
+    private String password;    
     private String phone;
     private String email;
     @OneToMany
@@ -46,18 +47,44 @@ public class User implements Serializable {
         
     }
 
-    public User(String name, String phone, String email) {
-        this.name = name;
+    public User(String realName, String userName, String password, String phone, String email) {
+        this.realName = realName;
+        this.userName = userName;
+        this.password = password;
         this.phone = phone;
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<ReservationResponse> getMySeats() {
+        return mySeats;
+    }
+
+    public void setMySeats(List<ReservationResponse> mySeats) {
+        this.mySeats = mySeats;
     }
 
     public String getPhone() {

@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -35,6 +36,20 @@ public class UserFacade implements IUserFacade {
 
     }
 
+    @Override
+    public User getUserByCredentials(String userName, String password) {
+        EntityManager em = emf.createEntityManager();
+        User u = null;
+        try {
+            Query query = em.createQuery("SELECT e FROM User e WHERE e.userName = :userName AND e.password = :password").setParameter("name", userName).setParameter("password", password);
+            u = (User) query.getSingleResult();
+        } finally {
+            em.close();
+        }
+        return u;
+
+    }
+    
     @Override
     public boolean addUser(User u) {
         EntityManager em = emf.createEntityManager();

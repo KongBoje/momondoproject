@@ -23,15 +23,15 @@ public class UserTests {
 
     @Test
     public void testGetUserTest() {
-        User u = new User("Anders And", "777", "and@bbb.ccc");
+        User u = new User("Anders And", "bobmarly2", "sfhasfd", "777", "and@bbb.ccc");
         UF.addUser(u);
 
-        assertTrue(UF.getUser(u.getId()).getName().equals("Anders And"));
+        assertTrue(UF.getUser(u.getId()).getRealName().equals("Anders And"));
     }
 
     @Test
     public void testDeleteUser() {
-        User u = new User("Knud", "333444", "knud@test.dk");
+        User u = new User("Knud", "antonmarly", "ajsfdaoihd", "333444", "knud@test.dk");
 
         UF.addUser(u);
         int before = UF.getAllUsers().size();
@@ -43,8 +43,8 @@ public class UserTests {
 
     @Test
     public void testGetAllUsers() {
-        User a = new User("Anton", "123", "aaa@bbb.ccc");
-        User b = new User("Marley", "54556545", "ddd@rrr.ggg");
+        User a = new User("Anton", "FaceShaman", "sihfs", "123", "aaa@bbb.ccc");
+        User b = new User("Marley", "Bobsaget", "sdjfsd", "54556545", "ddd@rrr.ggg");
         UF.addUser(a);
         UF.addUser(b);
 
@@ -59,7 +59,7 @@ public class UserTests {
 
     @Test
     public void testAddReservation() {
-        User u = new User("Hans", "456", "hc@andersen.dk");
+        User u = new User("Hans", "john hitler", "hsififsi", "456", "hc@andersen.dk");
         UF.addUser(u);
 
         assertTrue(u.getReservations().isEmpty());

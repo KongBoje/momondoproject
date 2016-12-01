@@ -17,6 +17,8 @@ public interface IUserFacade {
 
     public User getUser(Integer id);
     
+    public User getUserByCredentials(String name, String password);
+            
     public boolean addUser(User u);
     
     public boolean deleteUser(Integer id);
