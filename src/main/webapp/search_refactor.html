@@ -1,297 +1,316 @@
 <div class="search-section text-center">
-        <form class="form-inline">
-            <div class="container">
-                <h1><img src="images/plane.png" alt=""><span>Sammenlign <strong>billige flybilletter og hoteller {{startDate}}</strong></span></h1>
-                <div class="tab-sections">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active">
-                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><img width="24" src="images/small-plane.jpg" alt=""> Fly</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><img width="24" src="images/bed.jpg" alt=""> Hoteller</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><img width="24" src="images/car.jpg" alt=""> Biler</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="home">
-                            <div class="form-sec">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="fx CPH" aria-describedby="" ng-model="fromIATA">
+    <style>
+        
+    </style>
+    <form class="form-inline">
+        <div class="container">
+            <h1><img src="images/plane.png" alt=""><span>Sammenlign <strong>billige flybilletter og hoteller <!--{{startDate}}--></strong></span></h1>
+            <div class="tab-sections">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#home" aria-controls="home" role="tab" data-toggle="tab"><img width="24" src="images/small-plane.jpg" alt=""> Fly</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><img width="24" src="images/bed.jpg" alt=""> Hoteller</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><img width="24" src="images/car.jpg" alt=""> Biler</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <div class="form-sec">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
+                                    <!--<input type="text" class="form-control" placeholder="fx CPH" aria-describedby="" ng-model="fromIATA">-->
+                                    <div class="custom-select">
+                                        <select class="form-control" aria-describedby="" ng-model="fromIATA">
+                                            <option value="" hidden="">From</option>
+                                            <option>CPH</option>
+                                            <option>STN</option>
+                                            <option>SXF</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <img width="15" src="images/icon_2.jpg" alt="">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="fx SXF" aria-describedby="" ng-model="toIATA">
+                            </div>
+                            <img width="15" src="images/icon_2.jpg" alt="">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
+                                    <!--<input type="text" class="form-control" placeholder="fx SXF" aria-describedby="" ng-model="toIATA">-->
+                                    <div class="custom-select">
+                                        <select class="form-control" aria-describedby="" ng-model="toIATA">
+                                            <option value="" hidden="">To</option>
+                                            <option>CPH</option>
+                                            <option>STN</option>
+                                            <option>SXF</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control" datepicker="" ng-model="startDate" aria-describedby=""/>
-                                        <!--<input type="text" class="form-control" placeholder="fx 2017-01-20" aria-describedby="" ng-model="onDate">-->
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
+                                    <input type="text" class="form-control" datepicker="" ng-model="startDate" aria-describedby=""/>
+                                    <!--<input type="text" class="form-control" placeholder="fx 2017-01-20" aria-describedby="" ng-model="onDate">-->
                                 </div>
-                                <!--
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/calender_2.jpg" alt=""></span>
-                                        <input type="text" class="form-control date-field" placeholder="5 dec" aria-describedby="">
-                                    </div>
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/calender_2.jpg" alt=""></span>
+                                    <input type="text" class="form-control date-field" placeholder="5 dec" aria-describedby="">
                                 </div>
-                                -->
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
-                                        <div class="custom-select">
-                                             <select class="form-control" aria-describedby="" ng-model="passengerCount">
+                            </div>
+                            -->
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
+                                    <div class="custom-select">
+                                        <select class="form-control" aria-describedby="" ng-model="passengerCount">
                                             <option>1 Passenger</option>
                                             <option>2 Passenger</option>
                                             <option>3 Passenger</option>
                                             <option>4 Passenger</option>
                                             <option>5 Passenger</option>
                                         </select>
-                                        </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-danger" ng-click="searchFunc()">Søg</button>
                             </div>
-                            <div class="form-bottom">
-                                <ul class="list-inline">
-                                    <li>
-                                        <img width="20" src="images/icon.jpg" alt="">
-                                        <div class="custom-select">
-                                            <select>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img width="20" src="images/tickit.jpg" alt="">
-                                        <div class="custom-select">
-                                            <select>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="test1" />
-                                        <label for="test1">Direkte fly foretrukket</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="test2" />
-                                        <label for="test2">Lorem ipsum dolor sit</label>
-                                    </li>
-                                </ul>
-                            </div>
+                            <button type="submit" class="btn btn-danger" ng-click="searchFunc()">Søg</button>
                         </div>
-                        <!--
-                        <div role="tabpanel" class="tab-pane" id="profile">
-                            <div class="form-sec">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="IATA fx CPH" aria-describedby="">
-                                    </div>
-                                </div>
-                                <a href="#" class="direct"><img width="15" src="images/icon_2.jpg" alt=""></a>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="Til IATA fx STN" aria-describedby="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control date-field" placeholder="2016-01-11" aria-describedby="">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/calender_2.jpg" alt=""></span>
-                                        <input type="text" class="form-control date-field" placeholder="5 dec" aria-describedby="">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
-                                        <div class="custom-select">
-                                             <select class="form-control" aria-describedby="">
-                                            <option>1 Passanger</option>
-                                            <option>2 Passanger</option>
-                                            <option>3 Passanger</option>
-                                            <option>4 Passanger</option>
-                                            <option>5 Passanger</option>
+                        <div class="form-bottom">
+                            <ul class="list-inline">
+                                <li>
+                                    <img width="20" src="images/icon.jpg" alt="">
+                                    <div class="custom-select">
+                                        <select>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
                                         </select>
-                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-danger">Søg</button>
-                            </div>
-                            <div class="form-bottom">
-                                <ul class="list-inline">
-                                    <li>
-                                        <img width="20" src="images/icon.jpg" alt="">
-                                        <div class="custom-select">
-                                            <select>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img width="20" src="images/tickit.jpg" alt="">
-                                        <div class="custom-select">
-                                            <select>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="test3" />
-                                        <label for="test3">Direkte fly foretrukket</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="test4" />
-                                        <label for="test4">Lorem ipsum dolor sit</label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="messages">
-                            <div class="form-sec">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="Fra IATA fx SXF" aria-describedby="">
-                                    </div>
-                                </div>
-                                <a href="#" class="direct"><img width="15" src="images/icon_2.jpg" alt=""></a>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
-                                        <input type="text" class="form-control" placeholder="Til IATA fx STN" aria-describedby="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
-                                        <input type="text" class="form-control date-field" placeholder="2016-01-11" aria-describedby="">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/calender_2.jpg" alt=""></span>
-                                        <input type="text" class="form-control date-field" placeholder="5 dec" aria-describedby="">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
-                                        <div class="custom-select">
-                                             <select class="form-control" aria-describedby="">
-                                            <option>1 Passanger</option>
-                                            <option>2 Passanger</option>
-                                            <option>3 Passanger</option>
-                                            <option>4 Passanger</option>
-                                            <option>5 Passanger</option>
+                                </li>
+                                <li>
+                                    <img width="20" src="images/tickit.jpg" alt="">
+                                    <div class="custom-select">
+                                        <select>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
                                         </select>
-                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn btn-danger">Søg</button>
-                            </div>
-                            <div class="form-bottom">
-                                <ul class="list-inline">
-                                    <li>
-                                        <img width="20" src="images/icon.jpg" alt="">
-                                        <div class="custom-select">
-                                            <select>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img width="20" src="images/tickit.jpg" alt="">
-                                        <div class="custom-select">
-                                            <select>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                                <option>Lorem ipsum dolor sit</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="test5" />
-                                        <label for="test5">Direkte fly foretrukket</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="test6" />
-                                        <label for="test6">Lorem ipsum dolor sit</label>
-                                    </li>
-                                </ul>
-                            </div>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="test1" />
+                                    <label for="test1">Direkte fly foretrukket</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="test2" />
+                                    <label for="test2">Lorem ipsum dolor sit</label>
+                                </li>
+                            </ul>
                         </div>
-                        -->
                     </div>
+                    <!--
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <div class="form-sec">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
+                                    <input type="text" class="form-control" placeholder="IATA fx CPH" aria-describedby="">
+                                </div>
+                            </div>
+                            <a href="#" class="direct"><img width="15" src="images/icon_2.jpg" alt=""></a>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
+                                    <input type="text" class="form-control" placeholder="Til IATA fx STN" aria-describedby="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
+                                    <input type="text" class="form-control date-field" placeholder="2016-01-11" aria-describedby="">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/calender_2.jpg" alt=""></span>
+                                    <input type="text" class="form-control date-field" placeholder="5 dec" aria-describedby="">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
+                                    <div class="custom-select">
+                                         <select class="form-control" aria-describedby="">
+                                        <option>1 Passanger</option>
+                                        <option>2 Passanger</option>
+                                        <option>3 Passanger</option>
+                                        <option>4 Passanger</option>
+                                        <option>5 Passanger</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Søg</button>
+                        </div>
+                        <div class="form-bottom">
+                            <ul class="list-inline">
+                                <li>
+                                    <img width="20" src="images/icon.jpg" alt="">
+                                    <div class="custom-select">
+                                        <select>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img width="20" src="images/tickit.jpg" alt="">
+                                    <div class="custom-select">
+                                        <select>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="test3" />
+                                    <label for="test3">Direkte fly foretrukket</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="test4" />
+                                    <label for="test4">Lorem ipsum dolor sit</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <div class="form-sec">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
+                                    <input type="text" class="form-control" placeholder="Fra IATA fx SXF" aria-describedby="">
+                                </div>
+                            </div>
+                            <a href="#" class="direct"><img width="15" src="images/icon_2.jpg" alt=""></a>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
+                                    <input type="text" class="form-control" placeholder="Til IATA fx STN" aria-describedby="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/calender_1.jpg" alt=""></span>
+                                    <input type="text" class="form-control date-field" placeholder="2016-01-11" aria-describedby="">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/calender_2.jpg" alt=""></span>
+                                    <input type="text" class="form-control date-field" placeholder="5 dec" aria-describedby="">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
+                                    <div class="custom-select">
+                                         <select class="form-control" aria-describedby="">
+                                        <option>1 Passanger</option>
+                                        <option>2 Passanger</option>
+                                        <option>3 Passanger</option>
+                                        <option>4 Passanger</option>
+                                        <option>5 Passanger</option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Søg</button>
+                        </div>
+                        <div class="form-bottom">
+                            <ul class="list-inline">
+                                <li>
+                                    <img width="20" src="images/icon.jpg" alt="">
+                                    <div class="custom-select">
+                                        <select>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img width="20" src="images/tickit.jpg" alt="">
+                                    <div class="custom-select">
+                                        <select>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                            <option>Lorem ipsum dolor sit</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="test5" />
+                                    <label for="test5">Direkte fly foretrukket</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="test6" />
+                                    <label for="test6">Lorem ipsum dolor sit</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    -->
                 </div>
             </div>
-        </form>
-    </div>
-    <div class="search-bottm">
-        <div class="container">
-            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer</h2>
-            <ul>
-                <li><img src="https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/content_source/logo/3/thumb_thumb_smag-logo-lg.png" alt=""></li>
-                <li><img src="http://delaune.com/wp-content/themes/delaune2.0/images/DeLaune-logo.png" alt=""></li>
-                <li><img src="https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/content_source/logo/3/thumb_thumb_smag-logo-lg.png" alt=""></li>
-                <li><img src="http://delaune.com/wp-content/themes/delaune2.0/images/DeLaune-logo.png" alt=""></li>
-            </ul>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="box">
-                        <h3>Lorem ipsum </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus utmet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus ut, condimentum purus. Curabitur ut ultrices ante, sed posuere tellus.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="box">
-                        <h3>Lorem ipsum dolor</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus ut, condimentum purus. Curabitur ut ultrices ante, sed posuere tellus.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="box">
-                        <h3>Lorem ipsum dolor sit amet</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus ut, condimentum purus. Curabitur ut ultrices ante, sed posuere tellus.</p>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="loadmore"><span>Mere om momondo <img width="12"  src="images/down-arrow.png" alt=""></span></a>
         </div>
+    </form>
+</div>
+<div class="search-bottm">
+    <div class="container">
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer</h2>
+        <ul>
+            <li><img src="https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/content_source/logo/3/thumb_thumb_smag-logo-lg.png" alt=""></li>
+            <li><img src="http://delaune.com/wp-content/themes/delaune2.0/images/DeLaune-logo.png" alt=""></li>
+            <li><img src="https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/content_source/logo/3/thumb_thumb_smag-logo-lg.png" alt=""></li>
+            <li><img src="http://delaune.com/wp-content/themes/delaune2.0/images/DeLaune-logo.png" alt=""></li>
+        </ul>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="box">
+                    <h3>Lorem ipsum </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus utmet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus ut, condimentum purus. Curabitur ut ultrices ante, sed posuere tellus.</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="box">
+                    <h3>Lorem ipsum dolor</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus ut, condimentum purus. Curabitur ut ultrices ante, sed posuere tellus.</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="box">
+                    <h3>Lorem ipsum dolor sit amet</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac diam porta, porttitor lacus ut, condimentum purus. Curabitur ut ultrices ante, sed posuere tellus.</p>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="loadmore"><span>Mere om momondo <img width="12"  src="images/down-arrow.png" alt=""></span></a>
     </div>
+</div>
