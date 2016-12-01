@@ -10,9 +10,15 @@ package Extra;
  * @author Lasse
  */
 public class LoginObject {
+
     private final String username;
     private final String password;
-    
+
+    /**
+     *
+     * @param u Username
+     * @param p Password
+     */
     public LoginObject(String u, String p) {
         this.username = u;
         this.password = p;
@@ -25,6 +31,5 @@ public class LoginObject {
     public String getPassword() {
         return password;
     }
-    
-    
+
 }

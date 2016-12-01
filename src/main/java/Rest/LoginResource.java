@@ -36,16 +36,29 @@ public class LoginResource {
 
     public LoginResource() {
     }
+    
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String visit() {
+        return "Use the API with POST.";
+    }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(String json) {
-        LoginObject LO = GSON.fromJson(json, LoginObject.class);
+        try {
+            LoginObject LO = GSON.fromJson(json, LoginObject.class);
 
-        User tmp = UF.getUserByCredentials(LO.getUsername(), LO.getPassword());
-        
-        LoginResponseObject lro = new LoginResponseObject(tmp);
-        
-        return GSON.toJson(lro);
+            User tmp = UF.getUserByCredentials(LO.getUsername(), LO.getPassword());
+
+            LoginResponseObject lro = new LoginResponseObject(tmp);
+
+            return GSON.toJson(lro);
+        } catch (Exception ex) {
+            User tmpFail = new User("failure", "a", "b", "c", "d");
+            LoginResponseObject failure = new LoginResponseObject(tmpFail);
+            
+            return GSON.toJson(failure);
+        }
     }
 }

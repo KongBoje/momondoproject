@@ -2,7 +2,6 @@ package Facade;
 
 import Entity.Airport;
 import Entity.Flight;
-import Entity.FlightInstance;
 import Interface.IFlightFacade;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -83,11 +82,6 @@ public class FlightFacade implements IFlightFacade {
 
         //em.close();
         return result;
-    }
-
-    @Override
-    public FlightInstance addFlightInstance(FlightInstance flightInstance) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
