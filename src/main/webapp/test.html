@@ -13,23 +13,57 @@ and open the template in the editor.
         <script>
             var app = angular.module("myApp", []);
             
-            app.controller("myCtrl", ["$http", function($http) {
+            app.controller("myCtrl", ["$scope", "$http", function ($scope, $http) {
                     var req = {"username": "bobmarly2", "password": "sfhasfd"};
-                    
-                 $http({
-                     method: "POST",
-                     url: "api/login",
-                     data: req
-                 }).success(function (data) {
-                     console.log(data);
-                 }).error(function (error, status) {
-                     console.log(status);
-                     console.log(error);
-                 });
-            }]);
+                    $scope.resultType = 0;
+
+                    $http({
+                        method: "POST",
+                        url: "api/login",
+                        data: req
+                    }).success(function (data) {
+                        $scope.resultType = 1;
+                        $scope.userUsername = data.username;
+                        $scope.userId = data.id;
+                        $scope.userEmail = data.email;
+                        $scope.userRealname = data.realname;
+                        $scope.userPhone = data.phone;
+                        console.log(data);
+                    }).error(function (error, status) {
+                        console.log(status);
+
+                        if (status == 500) {
+                            $scope.resultType = 2;
+                            //alert(error.error.message);
+                            //sfhasfd
+                        }
+                        if (status == 400) {
+                            $scope.resultType = 3;
+                            //alert(error.message);
+                        }
+                        console.log(error);
+
+                    });
+                }]);
         </script>
     </head>
     <body>
-        
+        resultType {{resultType}}
+        <div ng-show="resultType == 0">
+            No response yet.
+        </div>
+        <div ng-show="resultType == 1">
+            ID is: {{userId}}<br>
+            Username is: {{userUsername}}<br>
+            Email is: {{userEmail}}<br>
+            Real name is: {{userRealname}}<br>
+            Phone: {{userPhone}}
+        </div>
+        <div ng-show="resultType == 2">
+            <div>Such a user doesn't exist.</div>
+        </div>
+        <div ng-show="resultType == 3">
+            <div>The password is wrong.</div>
+        </div>
     </body>
 </html>
