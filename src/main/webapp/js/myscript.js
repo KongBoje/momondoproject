@@ -6,6 +6,67 @@
 
 var app = angular.module("myApp", ["ngRoute"]);
 
+app.factory("loginContainer", function() {
+   var factory = {};
+   
+   var resultType = 0;
+   var username = null;
+   var id = null;
+   var email = null;
+   var realname = null;
+   var phone = null;
+   
+   factory.setResultType = function(data) {
+       resultType = data;
+   };
+   
+   factory.setUsername = function(data) {
+       username = data;
+   };
+   
+   factory.setId = function(data) {
+       id = data;
+   };
+   
+   factory.setEmail = function(data) {
+       email = data;
+   },
+   
+   factory.setRealname = function(data) {
+       realname = data;
+   };
+   
+   factory.setPhone = function(data) {
+       phone = data;
+   };
+   
+   factory.getResultType = function() {
+       return resultType;
+   };
+   
+   factory.getUsername = function() {
+       return username;
+   };
+   
+   factory.getId = function() {
+       return id;
+   };
+   
+   factory.getEmail = function() {
+       return email;
+   };
+   
+   factory.getRealname = function() {
+       return realname;
+   };
+   
+   factory.getPhone = function() {
+       return phone;
+   };
+   
+   return factory;
+});
+
 app.factory("dataContainer", function () {
     var factory = {};
 
@@ -60,12 +121,15 @@ app.config(function ($routeProvider) {
     }).when("/reserve", {
         templateUrl: "reserveflight.html",
         controller: "searchCtrl"
+    }).when("/login", {
+        templateUrl: "login.html",
+        controller: "loginCtrl"
     }).otherwise({
         redirectTo: "/search"
     });
 });
 
-app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", function ($scope, $http, dataContainer, $location) {
+app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContainer", "$location", function ($scope, $http, dataContainer, loginContainer, $location) {
         $scope.results = dataContainer.get();
         
         function getUndefined() {
@@ -181,7 +245,9 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "$location", f
         };
     }]);
 
-
+app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function($scope, $http, loginContainer) {
+        alert("loginCtrl");
+}]);
 
 app.directive('datepicker', function() {
   return {
