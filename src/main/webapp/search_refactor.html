@@ -18,6 +18,32 @@
         #Pass option {
             width: 190px;
         }
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="datetime"]:focus,
+        input[type="datetime-local"]:focus,
+        input[type="date"]:focus,
+        input[type="month"]:focus,
+        input[type="time"]:focus,
+        input[type="week"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="search"]:focus,
+        input[type="tel"]:focus,
+        input[type="color"]:focus,
+        select[type="text"]:focus,
+        .uneditable-input:focus {   
+            border-color: #0000ff;
+            box-shadow: #0000ff;
+            outline: 0 none;
+        }
+        .uneditable-select:focus {   
+            border-color: #0000ff;
+            box-shadow: #0000ff;
+            outline: 0 none;
+        }
     </style>
     <form class="form-inline">
         <div class="container">
@@ -42,7 +68,7 @@
                                     <span class="input-group-addon" id=""><img width="15" src="images/map_1.jpg" alt=""></span>
                                     <!--<input type="text" class="form-control" placeholder="fx CPH" aria-describedby="" ng-model="fromIATA">-->
                                     <div class="custom-select">
-                                        <select id="FromAir" class="form-control" aria-describedby="" ng-model="fromIATA">
+                                        <select type="text" id="FromAir" class="form-control" aria-describedby="" ng-model="fromIATA">
                                             <option value="" hidden="">From</option>
                                             <option>CPH</option>
                                             <option>STN</option>
@@ -59,7 +85,7 @@
                                     <span class="input-group-addon" id=""><img width="15" src="images/map.jpg" alt=""></span>
                                     <!--<input type="text" class="form-control" placeholder="fx SXF" aria-describedby="" ng-model="toIATA">-->
                                     <div class="custom-select">
-                                        <select id="ToAir" class="form-control" aria-describedby="" ng-model="toIATA">
+                                        <select type="text" id="ToAir" class="form-control" aria-describedby="" ng-model="toIATA">
                                             <option value="" hidden="">To</option>
                                             <option>CPH</option>
                                             <option>STN</option>
@@ -89,14 +115,14 @@
                                 <div class="input-group">
                                     <span class="input-group-addon" id=""><img width="15" src="images/profile.jpg" alt=""></span>
                                     <div class="custom-select">
-                                        <select id="Pass" class="form-control" aria-describedby="" ng-model="passengerCount">
+                                        <select type="text" id="Pass" class="form-control" aria-describedby="" ng-model="passengerCount">
                                             <option value="" hidden="">Passengers</option>
                                             <option>1 Passenger</option>
                                             <option>2 Passenger</option>
                                             <option>3 Passenger</option>
                                             <option>4 Passenger</option>
                                             <option>5 Passenger</option>
-                                            </select>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
