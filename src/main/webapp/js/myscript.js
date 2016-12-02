@@ -182,7 +182,7 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 url: "api/wrapreservation/" + $scope.fid,
                 data: req
             }).then(function success(response) {
-                $scope.GOTRESPONSE = true;
+                $scope.gotResponse = true;
                 
                 $scope.responseDate = response.data.date;
                 $scope.responseDestination = response.data.destination;
@@ -192,7 +192,7 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 $scope.responseOrigin = response.data.origin;
                 $scope.responsePassengers = response.data.passengers;
                 $scope.responseReserveeName = response.data.reserveeName;
-                //console.log(response.data);
+                console.log(response.data);
             });
         };
 
