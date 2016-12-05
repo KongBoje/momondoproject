@@ -44,6 +44,23 @@
             box-shadow: #0000ff;
             outline: 0 none;
         }
+        .close-icon{
+            color: #ff0033;
+            position:absolute;
+            transition: .5s ease;
+            top: 14%;
+            left: 91%;
+            margin-left: -5px;
+            z-index: 1000;
+        }
+        button {
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+        }
     </style>
     <form class="form-inline">
         <div class="container">
@@ -71,10 +88,10 @@
                                         <select type="text" id="FromAir" class="form-control" aria-describedby="" ng-model="fromIATA">
                                             <option value="" hidden="">From</option>
                                             <option value="CPH">Copenhagen(CPH)</option>
-                                            <option value="STN">Berlin(STN)</option>
-                                            <option value="SXF">SXF</option>
-                                            <option value="BCN">BCN</option>
-                                            <option value="CDG">CDG</option>
+                                            <option value="STN">London(STN)</option>
+                                            <option value="SXF">Berlin(SXF)</option>
+                                            <option value="BCN">Barcelona(BCN)</option>
+                                            <option value="CDG">Paris(CDG)</option>
                                         </select>
                                     </div>
                                 </div>
@@ -87,12 +104,13 @@
                                     <div class="custom-select">
                                         <select type="text" id="ToAir" class="form-control" aria-describedby="" ng-model="toIATA">
                                             <option value="" hidden="">To</option>
-                                            <option>CPH</option>
-                                            <option>STN</option>
-                                            <option>SXF</option>
-                                            <option>BCN</option>
-                                            <option>CDG</option>
+                                            <option value="CPH">Copenhagen(CPH)</option>
+                                            <option value="STN">London(STN)</option>
+                                            <option value="SXF">Berlin(SXF)</option>
+                                            <option value="BCN">Barcelona(BCN)</option>
+                                            <option value="CDG">Paris(CDG)</option>
                                         </select>
+                                        <button class="close-icon" type="reset">X</button>
                                     </div>
                                 </div>
                             </div>
