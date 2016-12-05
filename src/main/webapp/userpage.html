@@ -1,23 +1,50 @@
-<style>
-    body  {
-        background-image: url("http://www.wallpaperscharlie.com/wp-content/uploads/2016/10/Blue-Background-10.jpg");
-    }
-</style>
+<head>
+    <style>
+        body{
+            background-image: url("http://www.wallpaperscharlie.com/wp-content/uploads/2016/10/Blue-Background-10.jpg");
+            color: #cccccc;
+        }
+        
+    </style>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
-<h2>Mine oplysninger:</h2>
-<br>
-<div>Navn:</div>
-<div>Email:</div>
-<div>Phone:</div>
-<div>Mine Reservationer:</div>
+    <br><br><br><br>
+    <div class="panel panel-default container">
+        <h2>My Information</h2>
+    </div>
+    <div class="panel panel-default container">
+        <div class="panel-body">Name: {{name}}</div>
+        <div class="panel-body">Email: {{email}}</div>
+        <div class="panel-body">Phone: {{phone}}</div>
+    </div>    
+
+    <br>
+
+    <div class="container panel panel-default">
+        <h3>My Reservations: </h3>
+    </div>  
+    <div class="container panel panel-default">
+        <ol> 
+            <li></li>
+        </ol>
+    </div>
 
 
-<div>Flight Number:</div>
-<div>Deparding from:</div>
-<div>Destination:</div>
-<div>Date:</div>
-<div>Travel Time:</div>
-<div>Reserved Seats:</div>
-<div>Reserved by:</div>
-<div>Passengers:</div>
+    <div>Flight Number:</div>
+    <div>Deparding from:</div>
+    <div>Destination:</div>
+    <div>Date:</div>
+    <div>Travel Time:</div>
+    <div>Reserved Seats:</div>
+    <div>Reserved by:</div>
+    <div>Passengers:</div>
+
+
+
 </body>
