@@ -8,6 +8,7 @@ package JUnit;
 import Entity.Flight;
 import Facade.FlightFacade;
 import Interface.IFlightFacade;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -38,11 +39,12 @@ public class Tests {
         Flight flight = new Flight();
         entityManager.persist(flight);
 
-        Flight dbFlight = entityManager.createQuery(
+        List<Flight> dbFlight = entityManager.createQuery(
                 "select e "
                 + "from Flight e", Flight.class)
-                .getSingleResult();
-        assertEquals(flight.getFlightId(), dbFlight.getFlightId());
+                .getResultList();
+        System.out.println(dbFlight);
+        assertEquals(flight.getFlightId(), dbFlight.get(0).getFlightId());
 
         entityManager.getTransaction().commit();
         entityManager.close();

@@ -1,13 +1,47 @@
 <br><br><br><br>
-<table>
-    <tr>
-        <td>Username</td>
-        <td>Password</td>
-    </tr>
-    <tr>
-        <td><input type="text" ng-model="loginFieldUsername"></td>
-        <td><input type="text" ng-model="loginFieldPassword"></td>
-    </tr>
-</table>
-<button ng-click="loginButtonFunc()">Login</button>
-<div>{{resultMsg}}</div>
+<div class="container">
+    <style>
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        .uneditable-input:focus {   
+            border-color: lightblue;
+            box-shadow: lightblue;
+            outline: 0 none;
+        }
+    </style>
+    <div class="col-sm-6">
+        <div class="panel panel-default documentation">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <strong>Login</strong>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Username:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="Username" ng-model="loginFieldUsername">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Password:</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" name="Password" ng-model="loginFieldPassword">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-8">
+                                <button class="btn btn-success" ng-click="loginButtonFunc()">Login</button>
+                            </div>
+                        </div>
+                        <div>{{resultMsg}}</div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
