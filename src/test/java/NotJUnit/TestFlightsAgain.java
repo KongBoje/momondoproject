@@ -7,6 +7,9 @@ package NotJUnit;
 
 import Exceptions.FlightException;
 import Extra.DownloadProxy;
+import Extra.DownloadProxyScheduler;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -14,9 +17,16 @@ import Extra.DownloadProxy;
  */
 public class TestFlightsAgain {
     public static void main(String[] args) throws FlightException {
-        DownloadProxy dp = new DownloadProxy();
-        String res = dp.GetHttpRequest("http://localhost:8084/Momondoproject/api/allflights/CPH/2017-01-20T00:00:00.000Z/1");
+        ArrayList<String> myHttp = new ArrayList<>();
+        myHttp.add("http://stackoverflow.com/questions/11397008/does-a-list-object-get-passed-by-reference");
+        myHttp.add("http://ordnet.dk/");
         
-        System.out.println(res);
+        DownloadProxyScheduler dps = new DownloadProxyScheduler();
+        
+        ArrayList<String> loaded = dps.getResults(myHttp);
+        
+        for(String x : loaded) {
+            System.out.println(x);
+        }
     }
 }
