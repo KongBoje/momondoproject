@@ -1,5 +1,6 @@
 <br><br><br><br>
-<div>The length is {{results.length}}</div>
+<div ng-show="{{results.length == undefined}}">There were 0 airlines.</div>
+
 <div ng-repeat="x in results">
 
     <div class="search-reasult">

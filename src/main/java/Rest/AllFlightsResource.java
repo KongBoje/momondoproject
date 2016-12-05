@@ -63,6 +63,8 @@ public class AllFlightsResource {
 
         String larsAirline;
         String kaffeAirline;
+        
+        /*
         try {
             larsAirline = dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + date + "/" + tickets);
             EntityV2.Airline a1 = gson.fromJson(larsAirline, EntityV2.Airline.class);
@@ -70,7 +72,8 @@ public class AllFlightsResource {
         } catch (FlightException ex) {
             System.out.println(ex.getLocalizedMessage());
         }
-
+        */
+        
         try {
             kaffeAirline = dp.GetHttpRequest(OURDATA + "api/flights/" + from + "/" + date + "/" + tickets);
             EntityV2.Airline a2 = gson.fromJson(kaffeAirline, EntityV2.Airline.class);
@@ -91,13 +94,13 @@ public class AllFlightsResource {
         String larsAirline;
         String kaffeAirline;
 
-        try {
+        /*try {
             larsAirline = dp.GetHttpRequest("http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets);
             EntityV2.Airline a1 = gson.fromJson(larsAirline, EntityV2.Airline.class);
             airlines.add(a1);
         } catch (FlightException ex) {
             System.out.println(ex.getLocalizedMessage());
-        }
+        }*/
 
         try {
             kaffeAirline = dp.GetHttpRequest(OURDATA + "api/flights/" + from + "/" + to + "/" + date + "/" + tickets);
