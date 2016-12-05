@@ -29,7 +29,7 @@
                             <td>{{f.traveltime / 60}} hours</td>
                             <td>{{f.origin | niceIATA}}</td>
                             <td>{{f.destination | niceIATA}}</td>
-                            <td><a ng-href="#reserve" ng-click="gotoReserve(f.flightID, f.flightNumber)">Reservation</a></td>
+                            <td><a ng-href="#reserve" ng-click="gotoReserve(f.flightID, f.flightNumber, x.airline.source)">Reservation</a></td>
                         </tr>
                     </tbody>
                 </table>
