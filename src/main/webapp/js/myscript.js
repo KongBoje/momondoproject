@@ -74,6 +74,15 @@ app.factory("dataContainer", function () {
     var flightnum = null;
     var flightid = null;
     var passengerQty = null;
+    var src = null;
+    
+    factory.setSrc = function(data) {
+        src = data;
+    };
+    
+    factory.getSrc = function() {
+        return src;
+    };
 
     factory.setQty = function (data) {
         passengerQty = data;
@@ -155,9 +164,11 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
             $scope.passengerCount = getUndefined();
         };
 
-        $scope.gotoReserve = function (fid, fn) {
+        $scope.gotoReserve = function (fid, fn, src) {
             dataContainer.setfid(fid);
             dataContainer.setfn(fn);
+            dataContainer.setSrc(src);
+            console.log("Reserving with source: " + dataContainer.getSrc());
             // alert("something");
         };
 
@@ -178,12 +189,13 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 req.passengers.push(tmp);
             }
 
+            var setupReservation = {url: dataContainer.getSrc(), body: req, userid: loginContainer.getId()};
             //console.log(req);
 
             $http({
                 method: "POST",
                 url: "api/wrapreservation/" + $scope.fid,
-                data: req
+                data: setupReservation
             }).then(function success(response) {
                 $scope.gotResponse = true;
                 
@@ -264,8 +276,6 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
 
                 });
             }
-
-
         };
     }]);
 

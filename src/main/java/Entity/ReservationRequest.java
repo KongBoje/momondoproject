@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,8 @@ public class ReservationRequest implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Expose
+    @Column(unique=true)
     private String flightID;
     @Expose
     private int numberOfSeats;
@@ -42,12 +45,11 @@ public class ReservationRequest implements Serializable {
     @ElementCollection
     @CollectionTable(name="reqpassengers")
     @OneToMany
-    private List<Passenger> reqPassengers = new ArrayList<>();
+    private List<Passenger> passengers = new ArrayList<>();
 
     public ReservationRequest(Integer id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {
         this.id = id;
         this.flightID = flightID;
-        this.numberOfSeats = numberOfSeats;
         this.reserveeName = reserveeName;
         this.reservePhone = reservePhone;
         this.reserveeEmail = reserveeEmail;
@@ -99,15 +101,15 @@ public class ReservationRequest implements Serializable {
     }
 
     public List<Passenger> getReqPassengers() {
-        return reqPassengers;
+        return passengers;
     }
 
     public void setReqPassengers(List<Passenger> reqPassengers) {
-        this.reqPassengers = reqPassengers;
+        this.passengers = reqPassengers;
     }
 
     public void addPassenger(Passenger p) {
-        this.reqPassengers.add(p);
+        this.passengers.add(p);
         this.numberOfSeats++;
     }
 

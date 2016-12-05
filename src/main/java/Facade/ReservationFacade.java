@@ -22,56 +22,25 @@ public class ReservationFacade implements IReservationFacade {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("mmp");
     private static EntityManager em = emf.createEntityManager();
-    
-    @Override
-    public ReservationResponse getReservation(Integer id) {
-    
-        ReservationResponse r;
-        try {
-            r = em.find(ReservationResponse.class, id);
-        } finally {
-            em.close();
-        }
-        return r;
-        
-    }
-        
-    
 
     @Override
-    public boolean addReservation(ReservationResponse reservation) {
-            try {
-                em.getTransaction().begin();
-                em.persist(reservation);
-                em.getTransaction().commit();
-            } finally {
-                em.close();
-            }
-        return true;
-        
+    public ReservationResponse getReservationResponseById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deleteReservation(Integer id) {
-        try{
-            
-            em.getTransaction().begin();
-            em.find(ReservationResponse.class, id);
-            em.remove(id);
-            em.getTransaction().commit();
-        } finally{
-            em.close();
-        }
-        return true;
+    public boolean addReservationResponse(ReservationResponse rr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<ReservationRequest> getAllReservations() {
-       List<ReservationRequest> result = em.createQuery("SELECT e FROM ReservationResponse e").getResultList();
-       em.close();
-       return result;
+    public boolean deleteReservationResponse(ReservationResponse rr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
+    @Override
+    public List<ReservationResponse> getAllReservationResponses() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
