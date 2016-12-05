@@ -124,6 +124,9 @@ app.config(function ($routeProvider) {
     }).when("/login", {
         templateUrl: "login.html",
         controller: "loginCtrl"
+    }).when("/userpage", {
+        templateUrl: "userpage.html",
+        controller: "searchCtrl"
     }).otherwise({
         redirectTo: "/search"
     });
