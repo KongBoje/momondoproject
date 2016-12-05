@@ -65,6 +65,7 @@ public class AllFlightsResource {
         for(int i = 0; i != myHttp.size(); i++) {
             if(downloaded.get(i) != null) {
                 EntityV2.Airline tmpAirline = gson.fromJson(downloaded.get(i), EntityV2.Airline.class);
+                tmpAirline.setSource(myHttp.get(i).substring(0, myHttp.get(i).indexOf("api/")));
                 airlines.add(tmpAirline);
             }
         }

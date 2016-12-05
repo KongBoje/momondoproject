@@ -6,6 +6,7 @@
 package Entity;
 
 import Exceptions.FlightException;
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,8 +28,18 @@ public class Airline implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Expose
     private Long id;
+    @Expose
     private String airline;
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public void setAirline(String airline) {
+        this.airline = airline;
+    }
 
     @OneToMany(cascade = (CascadeType.PERSIST))
     private List<Flight> flights = new ArrayList();

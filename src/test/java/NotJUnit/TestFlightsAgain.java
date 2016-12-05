@@ -24,15 +24,10 @@ public class TestFlightsAgain {
         ArrayList<String> myHttp = new ArrayList<>();
         myHttp.add("http://stackoverflow.com/questions/11397008/does-a-list-object-get-passed-by-reference");
         myHttp.add("http://ordnet.dk/");
-        myHttp.add(null);
 
         DownloadProxyScheduler dps = new DownloadProxyScheduler();
 
         ArrayList<String> loaded = dps.getResults(myHttp);
-
-        for (String x : loaded) {
-            System.out.println(x);
-        }
         
     }
 }

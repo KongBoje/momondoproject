@@ -15,6 +15,8 @@ public class Airline {
     private final String airline;
     private final ArrayList<EntityV2.Flight> flights;
     
+    private String source;
+    
     public Airline(String a) {
         airline = a;
         flights = new ArrayList<>();
@@ -27,4 +29,14 @@ public class Airline {
     public ArrayList<EntityV2.Flight> getFlights() {
         return flights;
     }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+    
+    
 }

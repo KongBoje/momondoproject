@@ -29,7 +29,6 @@ public class ReservationRequest implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Expose
     private String flightID;
     @Expose
     private int numberOfSeats;
