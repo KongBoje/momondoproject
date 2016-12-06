@@ -276,10 +276,6 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 });
             }
         };
-                $scope.backImg = {
-                    'back-ground': 'url(http://www.wallpaperscharlie.com/wp-content/uploads/2016/10/Blue-Background-10.jpg)'
-                };
-                console.log(scope.backImg);
     }]);
 
 app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function ($scope, $http, loginContainer) {
@@ -337,6 +333,8 @@ app.directive('datepicker', function () {
     };
 });
 
+
+
 app.filter("niceIATA", function () {
     return function (x) {
         var tmp = x.toLowerCase();
@@ -354,7 +352,3 @@ app.filter("niceIATA", function () {
         return x;
     };
 });
- 
-   
-
-  
