@@ -1,71 +1,76 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<style>
+    #backImg{
+      background-image: url("http://www.wallpaperscharlie.com/wp-content/uploads/2016/10/Blue-Background-10.jpg");
 
-<br><br><br><br>
-<h2>This is the flight reservation page</h2>
+    }
+    
+</style>
 
-<!-- Angular cannot auto generate input fields so lets hardcode 5 -->
-<div ng-show="isLoggedIn()">
-<form>
-    <strong>Flight ID</strong>: {{fid}}<br>
-    <strong>Flight number</strong>: {{fn}}<br>
-    <strong>Your name</strong>: {{USERREALNAME}}
-    <br>
-    <br>
+    <div class ="backImage" ng-controller="searchCtrl" ng-style="{backgroundImage: backImg + 'images/Blue-Background-10.jpg' }" id="backImg">
+    <br><br><br><br>
+    
+    <h2>This is the flight reservation page</h2>
+    <link href="css/generic.css" rel="stylesheet" type="text/css"/>
+    <!-- Angular cannot auto generate input fields so lets hardcode 5 -->
+    <div  class="panel panel-default" ng-show="isLoggedIn()">  
+        <form class="panel-body">
 
-    <!-- just for correctness-->
-    <div>First and last name of {{maxPassengers}} passenger(s).</div>
-    <div ng-show="maxPassengers >= 1">
-        <input type="text" ng-model="passengers[0].firstName">
-        <input type="text" ng-model="passengers[0].lastName">
+            <strong>Flight ID</strong>: {{x.fid}}<br>
+            <strong>Flight number</strong>: {{x.fn}}<br>
+            <strong>Your name</strong>: {{x.USERREALNAME}}
+            <br>
+            <br>
+
+            <!-- just for correctness-->
+            <div>First and last name of {{maxPassengers}} passenger(s).</div>
+            <div ng-show="maxPassengers >= 1">
+                <input type="text" ng-model="passengers[0].firstName">
+                <input type="text" ng-model="passengers[0].lastName">
+                <hr>
+            </div>
+
+            <div ng-show="maxPassengers >= 2">
+                <input type="text" ng-model="passengers[1].firstName">
+                <input type="text" ng-model="passengers[1].lastName">
+                <hr>
+            </div>
+
+            <div ng-show="maxPassengers >= 3">
+                <input type="text" ng-model="passengers[2].firstName">
+                <input type="text" ng-model="passengers[2].lastName">
+                <hr>
+            </div>
+
+            <div ng-show="maxPassengers >= 4">
+                <input type="text" ng-model="passengers[3].firstName">
+                <input type="text" ng-model="passengers[3].lastName">
+                <hr>
+            </div>
+
+            <div ng-show="maxPassengers >= 5">
+                <input type="text" ng-model="passengers[4].firstName">
+                <input type="text" ng-model="passengers[4].lastName">
+                <hr>
+            </div>
+        </form>
+
+        <button ng-click="doReserve()">click me</button>
+    </div>
+    <br><br>
+    <div ng-show="gotResponse">
+        <div>Response received!</div>
+        <br>
+        <div>{{responseDate}}</div>
+        <div>{{responseDestination}}</div>
+        <div>{{responseFlightNumber}}</div>
+        <div>{{responseFlightTime}}</div>
+        <div>{{responseNumberOfSeats}}</div>
+        <div>{{responseOrigin}}</div>
         <hr>
-    </div>
-
-    <div ng-show="maxPassengers >= 2">
-        <input type="text" ng-model="passengers[1].firstName">
-        <input type="text" ng-model="passengers[1].lastName">
+        <div ng-repeat="x in responsePassengers">
+            <div>{{x.firstName}} {{x.lastName}}</div>
+        </div>
         <hr>
+        <div>{{responseReserveeName}}</div>
     </div>
-
-    <div ng-show="maxPassengers >= 3">
-        <input type="text" ng-model="passengers[2].firstName">
-        <input type="text" ng-model="passengers[2].lastName">
-        <hr>
-    </div>
-
-    <div ng-show="maxPassengers >= 4">
-        <input type="text" ng-model="passengers[3].firstName">
-        <input type="text" ng-model="passengers[3].lastName">
-        <hr>
-    </div>
-
-    <div ng-show="maxPassengers >= 5">
-        <input type="text" ng-model="passengers[4].firstName">
-        <input type="text" ng-model="passengers[4].lastName">
-        <hr>
-    </div>
-</form>
-
-<button ng-click="doReserve()">click me</button>
-</div>
-<br><br>
-<div ng-show="gotResponse">
-    <div>Response received!</div>
-    <br>
-    <div>{{responseDate}}</div>
-    <div>{{responseDestination}}</div>
-    <div>{{responseFlightNumber}}</div>
-    <div>{{responseFlightTime}}</div>
-    <div>{{responseNumberOfSeats}}</div>
-    <div>{{responseOrigin}}</div>
-    <hr>
-    <div ng-repeat="x in responsePassengers">
-        <div>{{x.firstName}} {{x.lastName}}</div>
-    </div>
-    <hr>
-    <div>{{responseReserveeName}}</div>
 </div>
