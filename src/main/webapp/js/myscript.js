@@ -6,65 +6,64 @@
 
 var app = angular.module("myApp", ["ngRoute"]);
 
-app.factory("loginContainer", function() {
-   var factory = {};
-   
-   var resultType = 0;
-   var username = null;
-   var id = null;
-   var email = null;
-   var realname = null;
-   var phone = null;
-   
-   factory.setResultType = function(data) {
-       resultType = data;
-   };
-   
-   factory.setUsername = function(data) {
-       username = data;
-   };
-   
-   factory.setId = function(data) {
-       id = data;
-   };
-   
-   factory.setEmail = function(data) {
-       email = data;
-   },
-   
-   factory.setRealname = function(data) {
-       realname = data;
-   };
-   
-   factory.setPhone = function(data) {
-       phone = data;
-   };
-   
-   factory.getResultType = function() {
-       return resultType;
-   };
-   
-   factory.getUsername = function() {
-       return username;
-   };
-   
-   factory.getId = function() {
-       return id;
-   };
-   
-   factory.getEmail = function() {
-       return email;
-   };
-   
-   factory.getRealname = function() {
-       return realname;
-   };
-   
-   factory.getPhone = function() {
-       return phone;
-   };
-   
-   return factory;
+app.factory("loginContainer", function () {
+    var factory = {};
+
+    var resultType = 0;
+    var username = null;
+    var id = null;
+    var email = null;
+    var realname = null;
+    var phone = null;
+
+    factory.setResultType = function (data) {
+        resultType = data;
+    };
+
+    factory.setUsername = function (data) {
+        username = data;
+    };
+
+    factory.setId = function (data) {
+        id = data;
+    };
+
+    factory.setEmail = function (data) {
+        email = data;
+    },
+            factory.setRealname = function (data) {
+                realname = data;
+            };
+
+    factory.setPhone = function (data) {
+        phone = data;
+    };
+
+    factory.getResultType = function () {
+        return resultType;
+    };
+
+    factory.getUsername = function () {
+        return username;
+    };
+
+    factory.getId = function () {
+        return id;
+    };
+
+    factory.getEmail = function () {
+        return email;
+    };
+
+    factory.getRealname = function () {
+        return realname;
+    };
+
+    factory.getPhone = function () {
+        return phone;
+    };
+
+    return factory;
 });
 
 app.factory("dataContainer", function () {
@@ -75,12 +74,12 @@ app.factory("dataContainer", function () {
     var flightid = null;
     var passengerQty = null;
     var src = null;
-    
-    factory.setSrc = function(data) {
+
+    factory.setSrc = function (data) {
         src = data;
     };
-    
-    factory.getSrc = function() {
+
+    factory.getSrc = function () {
         return src;
     };
 
@@ -144,20 +143,20 @@ app.config(function ($routeProvider) {
 app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContainer", "$location", function ($scope, $http, dataContainer, loginContainer, $location) {
         $scope.results = dataContainer.get();
         $scope.GOTRESPONSE = false;
-        
-        $scope.isLoggedIn = function() {
-            if(loginContainer.getId() == null) {
+
+        $scope.isLoggedIn = function () {
+            if (loginContainer.getId() == null) {
                 return false;
             } else {
                 return true;
             }
         }
-        
+
         function getUndefined() {
             return;
         }
-        
-        clearFields = function() {
+
+        clearFields = function () {
             $scope.fromIATA = getUndefined();
             $scope.toIATA = getUndefined();
             $scope.startDate = getUndefined();
@@ -198,7 +197,7 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 data: setupReservation
             }).then(function success(response) {
                 $scope.gotResponse = true;
-                
+
                 $scope.responseDate = response.data.date;
                 $scope.responseDestination = response.data.destination;
                 $scope.responseFlightNumber = response.data.flightNumber;
@@ -214,9 +213,9 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
         $scope.fn = dataContainer.getfn();
         $scope.fid = dataContainer.getfid();
         $scope.maxPassengers = dataContainer.getQty();
-        
+
         $scope.USERREALNAME = loginContainer.getRealname();
-        
+
         $scope.searchFunc = function () {
 
 
@@ -225,21 +224,21 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 clearFields();
                 return;
             }
-            
+
             if ($scope.startDate === undefined) {
                 alert("Fill in a date");
                 clearFields();
                 return;
             }
-            
-            
+
+
             $scope.onDate = $scope.startDate;
-            var month = ($scope.onDate).substring(0,2);
-            var day = ($scope.onDate).substring(3,5);
-            var year = ($scope.onDate).substring(6,10);
-            
+            var month = ($scope.onDate).substring(0, 2);
+            var day = ($scope.onDate).substring(3, 5);
+            var year = ($scope.onDate).substring(6, 10);
+
             $scope.onDate = year + "-" + month + "-" + day;
-            
+
             if ($scope.passengerCount === undefined) {
                 alert("Fill in passenger count");
                 clearFields();
@@ -277,72 +276,85 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 });
             }
         };
+                $scope.backImg = {
+                    'back-ground': 'url(http://www.wallpaperscharlie.com/wp-content/uploads/2016/10/Blue-Background-10.jpg)'
+                };
+                console.log(scope.backImg);
     }]);
 
-app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function($scope, $http, loginContainer) {
-    $scope.resultType = loginContainer.getResultType();
-    
-     $scope.loginButtonFunc = function() {
-      
-     var req = {username: $scope.loginFieldUsername, password: $scope.loginFieldPassword};
-        
-        $http({
-            method: "POST",
-            url: "api/login",
-            data: req
-        }).success(function (data) {
-            console.log("It worked!");
-            
-            loginContainer.setUsername(req.username);
-            loginContainer.setId(data.id);
-            loginContainer.setEmail(data.email);
-            loginContainer.setRealname(data.realname);
-            loginContainer.setPhone(data.phone);
-            
-            console.log(data);
-            console.log(loginContainer.getId());
-            console.log(loginContainer);
-            
-            $scope.resultMsg = "Success: You logged in as " + loginContainer.getUsername() + " (" + loginContainer.getRealname() + ")";
-        }).error(function(error, status) {
-            if(status == 500) {
-                console.log("User " + req.username + " doesn't exist");
-                $scope.resultMsg = "The user doesnt exist";
-            };
-            if(status == 400) {
-                console.log("User" + req.username + " isnt " + req.password);
-                $scope.resultMsg = "The password is wrong";
-            };
-        });
-    };
-}]);
+app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function ($scope, $http, loginContainer) {
+        $scope.resultType = loginContainer.getResultType();
 
-app.directive('datepicker', function() {
-  return {
-    link: function(scope, el, attr) {
-      $(el).datepicker({
-        onSelect: function(dateText) {
-          console.log(dateText);
-          var expression = attr.ngModel + " = " + "'" + dateText + "'";
-          scope.$apply(expression);
-          console.log(scope.startDate);
+        $scope.loginButtonFunc = function () {
+
+            var req = {username: $scope.loginFieldUsername, password: $scope.loginFieldPassword};
+
+            $http({
+                method: "POST",
+                url: "api/login",
+                data: req
+            }).success(function (data) {
+                console.log("It worked!");
+
+                loginContainer.setUsername(req.username);
+                loginContainer.setId(data.id);
+                loginContainer.setEmail(data.email);
+                loginContainer.setRealname(data.realname);
+                loginContainer.setPhone(data.phone);
+
+                console.log(data);
+                console.log(loginContainer.getId());
+                console.log(loginContainer);
+
+                $scope.resultMsg = "Success: You logged in as " + loginContainer.getUsername() + " (" + loginContainer.getRealname() + ")";
+            }).error(function (error, status) {
+                if (status == 500) {
+                    console.log("User " + req.username + " doesn't exist");
+                    $scope.resultMsg = "The user doesnt exist";
+                }
+                ;
+                if (status == 400) {
+                    console.log("User" + req.username + " isnt " + req.password);
+                    $scope.resultMsg = "The password is wrong";
+                }
+                ;
+            });
+        };
+    }]);
+
+app.directive('datepicker', function () {
+    return {
+        link: function (scope, el, attr) {
+            $(el).datepicker({
+                onSelect: function (dateText) {
+                    console.log(dateText);
+                    var expression = attr.ngModel + " = " + "'" + dateText + "'";
+                    scope.$apply(expression);
+                    console.log(scope.startDate);
+                }
+            });
         }
-      });
-    }
-  };
+    };
 });
 
-
-
-app.filter("niceIATA", function() {
-    return function(x) {
+app.filter("niceIATA", function () {
+    return function (x) {
         var tmp = x.toLowerCase();
         // js has no hshmap ..
-        if(tmp == "cph") return "Copenhagen";
-        if(tmp == "sxf") return "Berlin";
-        if(tmp == "stn") return "London";
-        if(tmp == "cdg") return "Paris";
-        if(tmp == "bcn") return "Barcelona";
+        if (tmp == "cph")
+            return "Copenhagen";
+        if (tmp == "sxf")
+            return "Berlin";
+        if (tmp == "stn")
+            return "London";
+        if (tmp == "cdg")
+            return "Paris";
+        if (tmp == "bcn")
+            return "Barcelona";
         return x;
     };
 });
+ 
+   
+
+  

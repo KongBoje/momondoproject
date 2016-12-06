@@ -38,7 +38,7 @@ public class setupData {
         
         f1.setFlightId("4443-8765989054363");
         f1.setFlightNumber("KAF3466");
-        f1.setDate("017-12-03T16:00:00.000Z");
+        f1.setDate("2017-12-03T16:00:00.000Z");
         f1.setSeats(9);
         f1.setTotalPrice(239);
         f1.setFlightTime(120);
