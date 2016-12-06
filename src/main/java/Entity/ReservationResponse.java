@@ -44,11 +44,10 @@ public class ReservationResponse implements Serializable {
     private int numberOfSeats;
     @Expose
     private String reserveeName;
-    @Expose
-    @ManyToOne
-    @ElementCollection
-    @CollectionTable(name="respassengers")
+    @OneToMany(mappedBy = "reservationResponse")
     private List<Passenger> resPassengers = new ArrayList<>();
+    @ManyToOne
+    private User user;
 
     public ReservationResponse(String flightNumber, String origin, String destination, String date, int flightTime, int numberOfSeats, String reserveeName) {
         this.flightNumber = flightNumber;
@@ -60,6 +59,14 @@ public class ReservationResponse implements Serializable {
         this.reserveeName = reserveeName;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
     public ReservationResponse() {
     }
 
@@ -133,6 +140,7 @@ public class ReservationResponse implements Serializable {
 
     public void addPassenger(Passenger p) {
         resPassengers.add(p);
+        p.setReservationResponse(this);
     }
 
     public List<Passenger> getResPassengers() {

@@ -17,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 /**
  *
@@ -41,10 +42,7 @@ public class ReservationRequest implements Serializable {
     private String reservePhone;
     @Expose
     private String reserveeEmail;
-    @Expose
-    @ElementCollection
-    @CollectionTable(name="reqpassengers")
-    @OneToMany
+    @Transient
     private List<Passenger> passengers = new ArrayList<>();
 
     public ReservationRequest(Integer id, String flightID, String reserveeName, String reservePhone, String reserveeEmail) {

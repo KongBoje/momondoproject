@@ -5,6 +5,7 @@
  */
 package EntityV2;
 
+import Entity.FakeReservationResponse;
 import Entity.ReservationRequest;
 
 /**
@@ -34,6 +35,6 @@ public class ReservationSetup {
         return userid;
     }
 
-    
+       
 
 }

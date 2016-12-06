@@ -39,9 +39,8 @@ public class User implements Serializable {
     private String password;
     private String phone;
     private String email;
-    @OneToMany
-    @ElementCollection
-    @CollectionTable(name="mySeats")
+    
+    @OneToMany(mappedBy = "user")
     private List<ReservationResponse> mySeats = new ArrayList<>();
     
     public User () {

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -27,6 +28,8 @@ public class Passenger implements Serializable {
     private String firstName;
     @Expose
     private String lastName;
+    @ManyToOne
+    private ReservationResponse reservationResponse;
 
     public Passenger(String firstName, String lastName) {
         this.firstName = firstName;
@@ -36,6 +39,16 @@ public class Passenger implements Serializable {
     public Passenger() {
 
     }
+
+    public ReservationResponse getReservationResponse() {
+        return reservationResponse;
+    }
+
+    public void setReservationResponse(ReservationResponse reservationResponse) {
+        this.reservationResponse = reservationResponse;
+    }
+    
+    
 
     public String getFirstName() {
         return firstName;

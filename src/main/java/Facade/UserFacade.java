@@ -5,6 +5,7 @@
  */
 package Facade;
 
+import Entity.Passenger;
 import Entity.ReservationResponse;
 import Entity.User;
 import Interface.IUserFacade;
@@ -20,7 +21,7 @@ import javax.persistence.Query;
  */
 public class UserFacade implements IUserFacade {
 
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("mmp");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("mmp");
     // private static EntityManager em = emf.createEntityManager();
 
     @Override
@@ -96,6 +97,12 @@ public class UserFacade implements IUserFacade {
         em.getTransaction().begin();
         
         u.addReservation(r);
+        r.setUser(u);
+        
+        for(Passenger x : r.getResPassengers()) {
+            em.persist(x);
+        }
+        
         em.persist(r);
         
         em.getTransaction().commit();
