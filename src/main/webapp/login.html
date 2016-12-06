@@ -1,9 +1,28 @@
 <style>
-    body  {
+    #backImg  {
         background-image: url("http://www.wallpaperscharlie.com/wp-content/uploads/2016/10/Blue-Background-10.jpg");
+        /* Set rules to fill background */
+        min-height: 100%;
+        min-width: 1024px;
+
+        /* Set up proportionate scaling */
+        width: 100%;
+        height: auto;
+
+        /* Set up positioning */
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    @media screen and (max-width: 1024px) { /* Specific to this particular image */
+        #backImg {
+            left: 50%;
+            margin-left: -512px;   /* 50% */
+        }
     }
 </style>
-<body>
+<div id="backImg">
     <br><br><br><br>
     <div class="container">
         <style>
@@ -16,7 +35,10 @@
                 outline: 0 none;
             }
             .panel-default{
-                background-color: rgb(246,246,246);
+                background-color: transparent;
+            }
+            label{
+                color: white;
             }
         </style>
         <div class="col-sm-6">
@@ -54,4 +76,4 @@
             </div>
         </div>
     </div>
-</body>
+</div>
