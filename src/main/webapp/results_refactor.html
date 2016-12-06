@@ -1,38 +1,66 @@
-<br><br><br><br>
-<div ng-show="{{results.length == undefined}}">There were 0 airlines.</div>
+<style>
+    #backImg{
+        background-image: url("http://www.wallpaperscharlie.com/wp-content/uploads/2016/10/Blue-Background-10.jpg");
+        min-height: 100%;
+        min-width: 1024px;
 
-<div ng-repeat="x in results">
+        /* Set up proportionate scaling */
+        width: 100%;
+        height: auto;
 
-    <div class="search-reasult">
-        <div class="container">
-            <div class="table-responsive">
-                <h1>{{x.airline}}</h1>
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Flight #</th>
-                            <th>Date YY-DD-MM</th>
-                            <!--<th>numberOfSeats</th>-->
-                            <th>Price</th>
-                            <th>Traveltime</th>
-                            <th>Origin</th>
-                            <th>Destination</th>
-                            <th>Reservation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="f in x.flights">
-                            <td>{{f.flightNumber}}</td>
-                            <td>{{f.date | date: 'yyyy-dd-MM HH:mm'}}</td>
-                            <!--<td>{{f.numberOfSeats}}</td>-->
-                            <td>{{f.totalPrice}} €</td>
-                            <td>{{f.traveltime / 60}} hours</td>
-                            <td>{{f.origin | niceIATA}}</td>
-                            <td>{{f.destination | niceIATA}}</td>
-                            <td><a ng-href="#reserve" ng-click="gotoReserve(f.flightID, f.flightNumber, x.source)">Reservation</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+        /* Set up positioning */
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    @media screen and (max-width: 1024px) { /* Specific to this particular image */
+        #backImg {
+            left: 50%;
+            margin-left: -512px;   /* 50% */
+        }
+    }
+    div {
+        color: #ffffff;
+    }
+</style>
+<div id="backImg" ng-controller="searchCtrl">
+    <br><br><br><br>
+    <div ng-show="{{results.length == undefined}}">There were 0 airlines.</div>
+
+    <div ng-repeat="x in results">
+
+        <div class="search-reasult">
+            <div class="container">
+                <div class="table-responsive">
+                    <h1>{{x.airline}}</h1>
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Flight #</th>
+                                <th>Date YY-DD-MM</th>
+                                <!--<th>numberOfSeats</th>-->
+                                <th>Price</th>
+                                <th>Traveltime</th>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                                <th>Reservation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="f in x.flights">
+                                <td>{{f.flightNumber}}</td>
+                                <td>{{f.date| date: 'yyyy-dd-MM HH:mm'}}</td>
+                                <!--<td>{{f.numberOfSeats}}</td>-->
+                                <td>{{f.totalPrice}} €</td>
+                                <td>{{f.traveltime / 60}} hours</td>
+                                <td>{{f.origin| niceIATA}}</td>
+                                <td>{{f.destination| niceIATA}}</td>
+                                <td><a ng-href="#reserve" ng-click="gotoReserve(f.flightID, f.flightNumber, x.source)">Reservation</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
