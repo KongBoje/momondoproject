@@ -276,6 +276,9 @@ app.controller("searchCtrl", ["$scope", "$http", "dataContainer", "loginContaine
                 });
             }
         };
+        $scope.Reset = function() {
+            $scope.toIATA = {};
+        };
     }]);
 
 app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function ($scope, $http, loginContainer) {
