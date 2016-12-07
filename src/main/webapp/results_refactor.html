@@ -20,16 +20,20 @@
             margin-left: -512px;   /* 50% */
         }
     }
-    div {
+    div{
         color: #ffffff;
+    }
+    a {
+      color: #122b40;  
+    }
+    a:hover{
+        color: white;   
     }
 </style>
 <div id="backImg" ng-controller="searchCtrl">
     <br><br><br><br>
-    <div ng-show="{{results.length == undefined}}">There were 0 airlines.</div>
-
+    <div ng-show="{{results.length == undefined}}">There were 0 airlines.</div>     
     <div ng-repeat="x in results">
-
         <div class="search-reasult">
             <div class="container">
                 <div class="table-responsive">
