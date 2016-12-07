@@ -34,11 +34,10 @@
 <div class="panel panel-default container">
     <h2>My Information</h2>
 </div>
-<div ng-repeat="x in userpage"></div>
 <div class="panel panel-default container">
-    <div class="panel-body">Name: {{x.name}}</div>
-    <div class="panel-body">Email: {{x.email}}</div>
-    <div class="panel-body">Phone: {{x.phone}}</div>
+    <div class="panel-body">Name: {{user_realname}}</div>
+    <div class="panel-body">Email: {{user_email}}</div>
+    <div class="panel-body">Phone: {{user_phone}}</div>
 </div>    
 
 <br>
@@ -59,19 +58,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="u in x.userpage">
-                    <td>{{u.flightNumber}}</td>
-                    <td>{{u.origin}}</td>
-                    <td>{{u.destination}}</td>
-                    <td>{{u.date}}</td>
-                    <td>{{u.flightTime}}</td>
-                    <td>{{u.numberOfSeats}}</td>
-                    <td>{{u.passengers}}</td>
+                <tr ng-repeat="r in user_reservations">
+                    <td>{{r.flightNumber}}</td>
+                    <td>{{r.origin}}</td>
+                    <td>{{r.destination}}</td>
+                    <td>{{r.date}}</td>
+                    <td>{{r.flightTime}}</td>
+                    <td>{{r.numberOfSeats}}</td>
+                    <td>
+                        <div ng-repeat="x in r.passengers">
+                            <div>{{x.firstName}} {{x.lastName}}</div>
+                        </div>
+                    </td>
                 </tr>
             </tbody>         
         </table>
     </div>
 </div>
+
+<button ng-click="update">Update</button>
 
 <!--    <div>Flight Number:</div>
     <div>Deparding from:</div>

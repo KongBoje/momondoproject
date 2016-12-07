@@ -134,7 +134,7 @@ app.config(function ($routeProvider) {
         controller: "loginCtrl"
     }).when("/userpage", {
         templateUrl: "userpage.html",
-        controller: "searchCtrl" //Lav en UserCtrl
+        controller: "userCtrl" //Lav en UserCtrl
     }).otherwise({
         redirectTo: "/search"
     });
@@ -320,6 +320,29 @@ app.controller("loginCtrl", ["$scope", "$http", "loginContainer", function ($sco
             });
         };
     }]);
+
+app.controller("userCtrl", ["$scope", "$http", "loginContainer", function($scope, $http, loginContainer) {       
+        $scope.update = function() {
+            $scope.user_realname = loginContainer.getRealname();
+            $scope.user_email = loginContainer.getEmail();
+            $scope.user_phone = loginContainer.getPhone();
+            
+            $http({
+                url: "api/userdata/" + loginContainer.getId()
+            }).success(function (data) {
+                $scope.user_reservations = data;
+            });
+        }
+        
+        
+        if(loginContainer.getId() == null) {
+            alert("Id is " + loginContainer.getId());
+            alert("You are not logged in");
+        } else {
+            $scope.update();
+        }
+
+}]);
 
 app.directive('datepicker', function () {
     return {
