@@ -5,7 +5,6 @@
  */
 package Rest;
 
-import Entity.FakeReservationResponse;
 import Entity.Passenger;
 import Entity.ReservationRequest;
 import Entity.ReservationResponse;
@@ -15,22 +14,16 @@ import Exceptions.FlightException;
 import Extra.DownloadProxy;
 import Facade.UserFacade;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
