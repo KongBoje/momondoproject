@@ -37,7 +37,6 @@ public class ReservationResource {
 
     private static final Gson gson = new Gson();
     private static final DownloadProxy dp = new DownloadProxy();
-    private static final UserFacade uf = new UserFacade();
 
     @Context
     private UriInfo context;
@@ -61,6 +60,8 @@ public class ReservationResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@PathParam("flightId") String flightId, String reservationRequestSetting) throws FlightException {
+        UserFacade uf = new UserFacade();
+        
         System.out.println(reservationRequestSetting);
 
         ReservationSetup rs = gson.fromJson(reservationRequestSetting, ReservationSetup.class);
