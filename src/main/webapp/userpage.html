@@ -13,6 +13,8 @@
         position: fixed;
         top: 0;
         left: 0;
+
+        z-index: -99999;
     }
 
     @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -27,55 +29,55 @@
     }
 </style>
 <div id ="backImg">
-    <br><br><br><br>
-    <div class="panel panel-default container">
-        <h2>My Information</h2>
-    </div>
-    <div ng-repeat="x in userpage"></div>
-    <div class="panel panel-default container">
-        <div class="panel-body">Name: {{x.name}}</div>
-        <div class="panel-body">Email: {{x.email}}</div>
-        <div class="panel-body">Phone: {{x.phone}}</div>
-    </div>    
-
-    <br>
-
-    <div class="container">
-        <div class ="table-resposive">
-                  <h3>My Reservations: </h3>
-            <table class="table table-striped table-bordered"> 
-                <thead>
-                    <tr>
-                        <th>Flight Number</th>
-                        <th>Origin</th>
-                        <th>Destination</th>
-                        <th>Date</th>
-                        <th>Flight Time</th>
-                        <th>Number of Seats</th>
-                        <th colspan="5">Passengers</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="u in x.userpage">
-                        <td>{{u.flightNumber}}</td>
-                        <td>{{u.origin}}</td>
-                        <td>{{u.destination}}</td>
-                        <td>{{u.date}}</td>
-                        <td>{{u.flightTime}}</td>
-                        <td>{{u.numberOfSeats}}</td>
-                        <td>{{u.passengers}}</td>
-                    </tr>
-                </tbody>         
-            </table>
-        </div>
-    </div>
-
-    <!--    <div>Flight Number:</div>
-        <div>Deparding from:</div>
-        <div>Destination:</div>
-        <div>Date:</div>
-        <div>Travel Time:</div>
-        <div>Reserved Seats:</div>
-        <div>Reserved by:</div>
-        <div>Passengers:</div>-->
 </div>
+<br><br><br><br>
+<div class="panel panel-default container">
+    <h2>My Information</h2>
+</div>
+<div ng-repeat="x in userpage"></div>
+<div class="panel panel-default container">
+    <div class="panel-body">Name: {{x.name}}</div>
+    <div class="panel-body">Email: {{x.email}}</div>
+    <div class="panel-body">Phone: {{x.phone}}</div>
+</div>    
+
+<br>
+
+<div class="container">
+    <div class ="table-resposive">
+        <h3>My Reservations: </h3>
+        <table class="table table-striped table-bordered"> 
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Flight Time</th>
+                    <th>Number of Seats</th>
+                    <th>Passengers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="u in x.userpage">
+                    <td>{{u.flightNumber}}</td>
+                    <td>{{u.origin}}</td>
+                    <td>{{u.destination}}</td>
+                    <td>{{u.date}}</td>
+                    <td>{{u.flightTime}}</td>
+                    <td>{{u.numberOfSeats}}</td>
+                    <td>{{u.passengers}}</td>
+                </tr>
+            </tbody>         
+        </table>
+    </div>
+</div>
+
+<!--    <div>Flight Number:</div>
+    <div>Deparding from:</div>
+    <div>Destination:</div>
+    <div>Date:</div>
+    <div>Travel Time:</div>
+    <div>Reserved Seats:</div>
+    <div>Reserved by:</div>
+    <div>Passengers:</div>-->
