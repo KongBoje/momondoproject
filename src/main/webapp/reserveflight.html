@@ -20,77 +20,147 @@
             margin-left: -512px;   /* 50% */
         }
     }
-    h2, strong {
+    h2 {
         color: white;
     }
-
+    strong, #gRes {
+        color: black;
+        text-align: center;
+    }
+    textarea:focus,
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    .uneditable-input:focus {   
+        border-color: lightblue;
+        box-shadow: lightblue;
+        outline: 0 none;
+    }
 </style>
 
 <div class ="backImage" ng-controller="searchCtrl" id = "backImg">
     <br><br><br><br>
-
-    <h2>This is the flight reservation page</h2>
-    <link href="css/generic.css" rel="stylesheet" type="text/css"/>
-    <!-- Angular cannot auto generate input fields so lets hardcode 5 -->
-    <div  class="panel panel-default" ng-show="isLoggedIn()">  
-        <form class="panel-body">
-
-            <strong>Flight ID</strong>: {{x.fid}}<br>
-            <strong>Flight number</strong>: {{x.fn}}<br>
-            <strong>Your name</strong>: {{x.USERREALNAME}}
-            <br>
-            <br>
-
-            <!-- just for correctness-->
-            <div>First and last name of {{maxPassengers}} passenger(s).</div>
-            <div ng-show="maxPassengers >= 1">
-                <input type="text" ng-model="passengers[0].firstName">
-                <input type="text" ng-model="passengers[0].lastName">
-                <hr>
-            </div>
-
-            <div ng-show="maxPassengers >= 2">
-                <input type="text" ng-model="passengers[1].firstName">
-                <input type="text" ng-model="passengers[1].lastName">
-                <hr>
-            </div>
-
-            <div ng-show="maxPassengers >= 3">
-                <input type="text" ng-model="passengers[2].firstName">
-                <input type="text" ng-model="passengers[2].lastName">
-                <hr>
-            </div>
-
-            <div ng-show="maxPassengers >= 4">
-                <input type="text" ng-model="passengers[3].firstName">
-                <input type="text" ng-model="passengers[3].lastName">
-                <hr>
-            </div>
-
-            <div ng-show="maxPassengers >= 5">
-                <input type="text" ng-model="passengers[4].firstName">
-                <input type="text" ng-model="passengers[4].lastName">
-                <hr>
-            </div>
-        </form>
-
-        <button ng-click="doReserve()">click me</button>
+    <div class="container">
+        <h2>Your reservations</h2>
+        <link href="css/generic.css" rel="stylesheet" type="text/css"/>
+        <!-- Angular cannot auto generate input fields so lets hardcode 5 -->
+        <div  class="panel panel-default" ng-show="isLoggedIn()">  
+            <form class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"><strong>Flight ID</strong>: {{x.fid}}</label><br>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"><strong>Flight number</strong>: {{x.fn}}</label><br>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"><strong>Your name</strong>: {{x.USERREALNAME}}</label>
+                </div>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="panel panel-default documentation">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                First and last name of {{maxPassengers}} passenger(s).
+                            </h5>
+                        </div>
+                        <!-- just for correctness-->
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div ng-show="maxPassengers >= 1">
+                                            <label class="col-sm-3 control-label">Firstname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[0].firstName">
+                                            </div>
+                                            <label class="col-sm-3 control-label">Lastname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[0].lastName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div ng-show="maxPassengers >= 2">
+                                            <label class="col-sm-3 control-label">Firstname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[1].firstName">
+                                            </div>
+                                            <label class="col-sm-3 control-label">Lastname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[1].lastName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div ng-show="maxPassengers >= 3">
+                                            <label class="col-sm-3 control-label">Firstname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[2].firstName">
+                                            </div>
+                                            <label class="col-sm-3 control-label">Lastname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[2].lastName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div ng-show="maxPassengers >= 4">
+                                            <label class="col-sm-3 control-label">Firstname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[3].firstName">
+                                            </div>
+                                            <label class="col-sm-3 control-label">Lastname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[3].lastName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div ng-show="maxPassengers >= 5">
+                                            <label class="col-sm-3 control-label">Firstname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[4].firstName">
+                                            </div>
+                                            <label class="col-sm-3 control-label">Lastname:</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="passengers[4].lastName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label"></label>
+                                        <div class="col-sm-8">
+                                            <button class="btn btn-success" ng-click="doReserve()">Click</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <br><br>
-    <div ng-show="gotResponse">
-        <div>Response received!</div>
-        <br>
-        <div>{{responseDate}}</div>
-        <div>{{responseDestination}}</div>
-        <div>{{responseFlightNumber}}</div>
-        <div>{{responseFlightTime}}</div>
-        <div>{{responseNumberOfSeats}}</div>
-        <div>{{responseOrigin}}</div>
-        <hr>
-        <div ng-repeat="x in responsePassengers">
-            <div>{{x.firstName}} {{x.lastName}}</div>
+    <div class="container">
+        <div class="panel panel-default">
+            <div id="gRes" ng-show="gotResponse">
+                <div>Response received!</div>
+                <br>
+                <div>{{responseDate}}</div>
+                <div>{{responseDestination}}</div>
+                <div>{{responseFlightNumber}}</div>
+                <div>{{responseFlightTime}}</div>
+                <div>{{responseNumberOfSeats}}</div>
+                <div>{{responseOrigin}}</div>
+                <hr>
+                <div ng-repeat="x in responsePassengers">
+                    <div>{{x.firstName}} {{x.lastName}}</div>
+                </div>
+                <hr>
+                <div>{{responseReserveeName}}</div>
+            </div>
         </div>
-        <hr>
-        <div>{{responseReserveeName}}</div>
     </div>
+</div>
 </div>
