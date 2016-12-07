@@ -327,10 +327,14 @@ app.controller("userCtrl", ["$scope", "$http", "loginContainer", function($scope
             $scope.user_email = loginContainer.getEmail();
             $scope.user_phone = loginContainer.getPhone();
             
+            alert("update");
+            
             $http({
                 url: "api/userdata/" + loginContainer.getId()
             }).success(function (data) {
                 $scope.user_reservations = data;
+            }).error(function (error, status) {
+                console.log(error);
             });
         }
         
