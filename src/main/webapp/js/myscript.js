@@ -134,7 +134,7 @@ app.config(function ($routeProvider) {
         controller: "loginCtrl"
     }).when("/userpage", {
         templateUrl: "userpage.html",
-        controller: "searchCtrl"
+        controller: "searchCtrl" //Lav en UserCtrl
     }).otherwise({
         redirectTo: "/search"
     });
