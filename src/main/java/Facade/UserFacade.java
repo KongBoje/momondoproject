@@ -29,6 +29,7 @@ public class UserFacade implements IUserFacade {
         EntityManager em = emf.createEntityManager();
         User u = null;
         try {
+            emf.getCache().evictAll();
             u = em.createNamedQuery("User.findById", User.class).setParameter("id", id).getSingleResult();
         } finally {
             em.close();

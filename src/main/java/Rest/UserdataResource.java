@@ -26,8 +26,6 @@ import javax.ws.rs.core.MediaType;
 @Path("userdata")
 public class UserdataResource {
 
-    private static final UserFacade UF = new UserFacade();
-
     @Context
     private UriInfo context;
 
@@ -44,12 +42,15 @@ public class UserdataResource {
      * @return an instance of java.lang.String
      */
     @GET
+    
     @Path("/{userid}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson(@PathParam("userid") int userid) {
+        UserFacade UF = new UserFacade();
         User tmp = UF.getUser(userid);
         List<ReservationResponse> responses = tmp.getReservations();
-
+        
+        
         return GetUserReservationResponsesJSON.ReservationResponseToJson(responses);
     }
 
