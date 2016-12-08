@@ -60,8 +60,8 @@
             <tbody>
                 <tr ng-repeat="r in user_reservations">
                     <td>{{r.flightNumber}}</td>
-                    <td>{{r.origin}}</td>
-                    <td>{{r.destination}}</td>
+                    <td>{{r.origin | niceIATA}}</td>
+                    <td>{{r.destination | niceIATA}}</td>
                     <td>{{r.date}}</td>
                     <td>{{r.flightTime}}</td>
                     <td>{{r.numberOfSeats}}</td>
